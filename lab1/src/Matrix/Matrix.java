@@ -15,8 +15,8 @@ public class Matrix {
     }
 
     public static void print(int[][] m) {
-        for (int c1 = 0; c1 < m.length; c1++) {
-            for (int c2 = 0; c2 < m[c1].length; c2++) {
+        for (int c1 = 0; c1 < m[0].length; c1++) {
+            for (int c2 = 0; c2 < m.length; c2++) {
                 System.out.print(m[c2][c1] + " ");
             }
             System.out.println();

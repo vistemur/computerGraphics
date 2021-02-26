@@ -1,6 +1,6 @@
-package windows.exercises.Excercise1;
+package windows.Уxercises.Excercise1;
 
-import graphicElements.Triangle;
+import Drawings.graphicElements.Triangle;
 import gui.DrawPanel;
 
 public class Sketch1 extends DrawPanel {

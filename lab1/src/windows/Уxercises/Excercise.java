@@ -1,4 +1,4 @@
-package windows.exercises;
+package windows.Уxercises;
 
 import gui.NavigationButton;
 import navigation.Window;
@@ -45,7 +45,7 @@ public abstract class Excercise extends Window {
         header.setPreferredSize(new Dimension(width, 100));
         spacer.setPreferredSize(new Dimension(width - 100, 80));
         content.setPreferredSize(new Dimension(width, height - 100));
-        resizeElements(width, height - 100);
+        resizeElements(width, height - 140);
     }
 
     protected abstract void initialize();

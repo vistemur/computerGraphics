@@ -2,7 +2,7 @@ package navigation;
 
 import gui.NavigationButton;
 import windows.MainMenu;
-import windows.exercises.Excercise1.Exercise1;
+import windows.Уxercises.Excercise1.Exercise1;
 
 import javax.swing.*;
 import java.awt.*;
