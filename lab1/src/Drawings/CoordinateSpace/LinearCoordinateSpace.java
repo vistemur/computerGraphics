@@ -34,17 +34,11 @@ public class LinearCoordinateSpace implements CoordinateSpace {
         Matrix.print(userCoordinates);
         System.out.println();
         Matrix.print(realCoordinates);
+        System.out.println("\n\n\n");
         return realCoordinates;
     }
 
     private int convert(int num, int userMin, int userMax, int realMax) {
-        int answer;
-
-        answer = 0;
-        System.out.println("userMax = " + userMax);
-        System.out.println("realMax = " + realMax);
-        //TODO: вывести нормальную формулу
-        answer = num * realMax / userMax;
-        return answer;
+        return (num - userMin) * realMax / (userMax - userMin);
     }
 }

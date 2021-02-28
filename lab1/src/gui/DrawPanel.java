@@ -32,7 +32,7 @@ public abstract class DrawPanel extends JPanel {
                 drawing.repaint();
             }
         }, 0, 10);
-        this.coordinateSpace = new LinearCoordinateSpace(0, 100, 0, 100);
+        this.coordinateSpace = new LinearCoordinateSpace(-100, 100, 100, -100);
         setActions();
         setup();
     }

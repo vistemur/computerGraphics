@@ -1,7 +1,6 @@
 package Drawings.graphicElements;
 
 import Drawings.CoordinateSpace.CoordinateSpace;
-import Matrix.Matrix;
 
 import java.awt.*;
 
@@ -16,7 +15,6 @@ public class Triangle implements Drawable {
         points = new int[][] {{x1, x2, x3}, {y1, y2, y3}};
         drawPoints = new int[][] {{x1, x2, x3}, {y1, y2, y3}};
         color = Color.black;
-        //Matrix.print(new int[][] {{1, 2}, {3, 4}});
     }
 
     public void draw(Graphics g) {
