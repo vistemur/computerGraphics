@@ -2,6 +2,7 @@ package gui;
 
 import Drawings.CoordinateSpace.CoordinateSpace;
 import Drawings.CoordinateSpace.LinearCoordinateSpace;
+import Drawings.graphicElements.Circle;
 import Drawings.graphicElements.Drawable;
 import Drawings.graphicElements.Triangle;
 
@@ -19,11 +20,24 @@ public abstract class DrawPanel extends JPanel {
     private Drawable[] elements;
     private CoordinateSpace coordinateSpace;
     private DrawPanel drawPanel = this;
+    protected boolean showGrid = false;
+    private Drawable grid;
 
     public DrawPanel() {
+        initElements();
+        setTimer(10);
+        setCoordinateSpace();
+        setActions();
+        setup();
+    }
+
+    private void initElements() {
         elementsCapacity = 100;
         elementsAmount = 0;
         elements = new Drawable[elementsCapacity];
+    }
+
+    private void setTimer(int period) {
         DrawPanel drawing = this;
         timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
@@ -31,10 +45,17 @@ public abstract class DrawPanel extends JPanel {
             public void run() {
                 drawing.repaint();
             }
-        }, 0, 10);
+        }, 0, period);
+    }
+
+    private void setCoordinateSpace() {
         this.coordinateSpace = new LinearCoordinateSpace(-100, 100, 100, -100);
-        setActions();
-        setup();
+        setGrid();
+    }
+
+    private void setGrid()  {
+        this.grid = coordinateSpace.getGrid();
+        grid.setCoordinateSpace(coordinateSpace);
     }
 
     protected void addElement(Drawable element) {
@@ -54,6 +75,8 @@ public abstract class DrawPanel extends JPanel {
         draw();
         for (int elem = 0; elem < elementsAmount; elem++)
             elements[elem].draw(g);
+        if (showGrid)
+            this.grid.draw(g);
     }
 
     private void setActions() {
@@ -63,6 +86,8 @@ public abstract class DrawPanel extends JPanel {
                 coordinateSpace.setReal(drawPanel.getWidth(), drawPanel.getHeight());
                 for (int elem = 0; elem < elementsAmount; elem++)
                     elements[elem].countDrawCoordinates();
+                if (showGrid)
+                    grid.countDrawCoordinates();
             }
         });
     }
@@ -77,5 +102,14 @@ public abstract class DrawPanel extends JPanel {
         triangle.setCoordinateSpace(coordinateSpace);
         addElement(triangle);
         return triangle;
+    }
+
+    protected Circle makeCircle(int x, int y, int radius) {
+        Circle circle;
+
+        circle = new Circle(x, y, radius);
+        circle.setCoordinateSpace(coordinateSpace);
+        addElement(circle);
+        return circle;
     }
 }

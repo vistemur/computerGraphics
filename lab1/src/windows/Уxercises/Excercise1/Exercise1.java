@@ -13,7 +13,7 @@ public class Exercise1 extends Excercise {
     @Override
     protected void initialize() {
         sketch = new Sketch1();
-        sketch.setBackground(Color.darkGray);
+        sketch.setBackground(Color.MAGENTA);
     }
 
     @Override
