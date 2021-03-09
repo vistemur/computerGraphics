@@ -4,6 +4,7 @@ import Drawings.graphicElements.*;
 import gui.DrawPanel;
 
 import java.awt.*;
+import java.awt.geom.Point2D;
 
 public class Sketch1 extends DrawPanel {
 
@@ -17,8 +18,8 @@ public class Sketch1 extends DrawPanel {
     @Override
     protected void setup() {
         showGrid = true;
-        circle1 = makeCircle(0, 0, 20);
         circle2 = makeCircle(50, 30, 10);
+        circle1 = makeCircle(0, 0, 20);
         line = makeLine(0, 0, 50, 30);
         state = State.makingCircle1;
         setColors();
@@ -45,6 +46,14 @@ public class Sketch1 extends DrawPanel {
             case sizingCircle2:
                 circle2.setRadius(Math.abs(circle2.getCenter().x - mouse.x) + Math.abs(circle2.getCenter().y - mouse.y) / 2);
                 break;
+            case movingCircle1:
+                circle1.setCenter(mouse.getPoint());
+                countLinePoints();
+                break;
+            case movingCircle2:
+                circle2.setCenter(mouse.getPoint());
+                countLinePoints();
+                break;
         }
     }
 
@@ -68,6 +77,22 @@ public class Sketch1 extends DrawPanel {
                 circle2.setVisible(true);
                 state = State.sizingCircle2;
                 break;
+            case normal:
+                if (Point2D.distance(   circle1.getCenter().x, circle1.getCenter().y,
+                                        mouse.getPoint().x, mouse.getPoint().y)
+                                                    <=
+                                        circle1.getRadius()) {
+                    state = State.movingCircle1;
+                } else if (Point2D.distance(    circle2.getCenter().x, circle2.getCenter().y,
+                                                mouse.getPoint().x, mouse.getPoint().y)
+                                                         <=
+                                                circle2.getRadius()) {
+                    state = State.movingCircle2;
+                }
+                break;
+            case movingCircle1: case movingCircle2:
+                state = State.normal;
+                break;
         }
     }
 
@@ -78,12 +103,16 @@ public class Sketch1 extends DrawPanel {
                 state = State.makingCircle2;
                 break;
             case sizingCircle2:
-                countIntersectionPoints(circle1.getCenter(), circle1.getRadius(),
-                                        circle2.getCenter(), circle2.getRadius());
+                countLinePoints();
                 line.setVisible(true);
                 state = State.normal;
                 break;
         }
+    }
+
+    private void countLinePoints() {
+        countIntersectionPoints(circle1.getCenter(), circle1.getRadius(),
+                circle2.getCenter(), circle2.getRadius());
     }
 
     private void countIntersectionPoints(Point circle1Center, int circle1Radius, Point circle2Center, int circle2Radius) {
