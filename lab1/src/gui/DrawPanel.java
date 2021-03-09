@@ -24,7 +24,7 @@ public abstract class DrawPanel extends JPanel {
     public DrawPanel() {
         initElements();
         setTimer(10);
-        setCoordinateSpace();
+        setCoordinateSpace(new LinearCoordinateSpace(-100, 100, 100, -100));
         setActions();
         setup();
     }
@@ -47,8 +47,8 @@ public abstract class DrawPanel extends JPanel {
         }, 0, period);
     }
 
-    private void setCoordinateSpace() {
-        this.coordinateSpace = new LinearCoordinateSpace(-100, 100, 100, -100);
+    protected void setCoordinateSpace(CoordinateSpace coordinateSpace) {
+        this.coordinateSpace = coordinateSpace;
         setGrid();
     }
 
@@ -71,14 +71,18 @@ public abstract class DrawPanel extends JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
-        mouse.x = MouseInfo.getPointerInfo().getLocation().x - getLocationOnScreen().x;
-        mouse.y = MouseInfo.getPointerInfo().getLocation().y - getLocationOnScreen().y;
-        coordinateSpace.countMouseCoordinates(mouse);
+        countMouseCoordinates();
         draw();
         for (int elem = 0; elem < elementsAmount; elem++)
             elements[elem].draw(g);
         if (showGrid)
             this.grid.draw(g);
+    }
+
+    private void countMouseCoordinates() {
+        mouse.x = MouseInfo.getPointerInfo().getLocation().x - getLocationOnScreen().x;
+        mouse.y = MouseInfo.getPointerInfo().getLocation().y - getLocationOnScreen().y;
+        coordinateSpace.countMouseCoordinates(mouse);
     }
 
     private void setActions() {

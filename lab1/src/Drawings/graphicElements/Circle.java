@@ -12,6 +12,22 @@ public class Circle extends DrawElement {
         setRadius(radius);
     }
 
+    public Circle(Point point, int radius) {
+        this(point.x, point.y, radius);
+    }
+
+    public Point getCenter() {
+        return new Point(points[0][0], points[1][0]);
+    }
+
+    public int getRadius() {
+        return radius / 2;
+    }
+
+    public void setCenter(Point point) {
+        setCenter(point.x, point.y);
+    }
+
     public void setCenter(int x, int y) {
         setPoints(new int[][] {{x}, {y}});
     }

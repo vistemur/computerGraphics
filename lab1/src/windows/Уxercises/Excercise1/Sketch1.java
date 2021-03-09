@@ -14,15 +14,29 @@ public class Sketch1 extends DrawPanel {
     @Override
     protected void setup() {
         showGrid = true;
-        circle1 = makeCircle(-50, -20, 20);
+        circle1 = makeCircle(0, 0, 20);
         circle2 = makeCircle(50, 30, 10);
-        line = makeLine(0, 0, 100, 100);
+        line = makeLine(0, 0, 50, 30);
+        setColors();
+    }
+
+    private void setColors() {
+        circle1.setColor(Color.white);
         line.setColor(Color.red);
     }
 
     @Override
     protected void draw() {
-        circle1.setCenter(mouse.x, mouse.y);
-        line.setPoints(mouse.x, mouse.y, 50, 30);
+        circle1.setCenter(mouse.getPoint());
+        line.setPoint(0, countIntersectionPoint(circle1.getCenter(), circle1.getRadius(), line.getPoint(1)));
+    }
+
+    private Point countIntersectionPoint(Point circleCenter, int radius, Point anotherLinePoint) {
+        Point point = new Point();
+
+        point.x = mouse.x; // make super cool formula
+        point.y = mouse.y;
+
+        return point;
     }
 }

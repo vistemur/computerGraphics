@@ -102,11 +102,11 @@ public class LinearCoordinateSpace implements CoordinateSpace {
                     if (osY) {
                         y = convert(counter, userMinY, userMaxY, realMaxY);
                         g.drawLine(x - 10, y, x + 10, y);
-                        g.drawString(str, x + 5, y + ((counter > 0) ? 15 : -5));
+                        g.drawString(str, x + 5, y + ((y > (realMaxY / 2)) ? -5 : 15));
                     } else {
                         x = convert(counter, userMinX, userMaxX, realMaxX);
                         g.drawLine(x, y - 10, x, y + 10);
-                        g.drawString(str, x - ((counter > 0) ? str.length() * 10 : 0), y - 10);
+                        g.drawString(str, x - ((x > (realMaxX / 2)) ? str.length() * 10 : 0), y - 10);
                     }
                 }
             }
