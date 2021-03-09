@@ -1,7 +1,7 @@
-package windows.Уxercises.Excercise1;
+package windows.Exercises.Excercise1;
 
 import gui.DrawPanel;
-import windows.Уxercises.Excercise;
+import windows.Exercises.Excercise;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,4 +1,4 @@
-package windows.Уxercises;
+package windows.Exercises;
 
 import gui.NavigationButton;
 import navigation.Window;

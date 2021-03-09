@@ -7,6 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -96,10 +98,28 @@ public abstract class DrawPanel extends JPanel {
                     grid.countDrawCoordinates();
             }
         });
+
+        this.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                drawPanel.mouseClicked();
+            }
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
+                drawPanel.mousePressed();
+            }
+            public void mouseReleased(MouseEvent e) {
+                super.mouseReleased(e);
+                drawPanel.mouseReleased();
+            }
+        });
     }
 
     protected abstract void setup();
     protected abstract void draw();
+    protected void mouseClicked() {};
+    protected void mousePressed() {};
+    protected void mouseReleased() {};
 
     protected Triangle makeTriangle(int x1, int y1, int x2, int y2, int x3, int y3) {
         return (Triangle) makeElement(new Triangle(x1, y1, x2, y2, x3, y3));

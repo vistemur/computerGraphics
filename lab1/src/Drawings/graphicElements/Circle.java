@@ -34,6 +34,7 @@ public class Circle extends DrawElement {
 
     public void setRadius(int radius) {
         this.radius = radius * 2;
+        recountCoordinates();
     }
 
     @Override
@@ -43,7 +44,9 @@ public class Circle extends DrawElement {
 
     @Override
     protected void recountCoordinates() {
-        drawRadiusX = coordinateSpace.convertX(radius);
-        drawRadiusY = coordinateSpace.convertY(radius);
+        if (coordinateSpace != null) {
+            drawRadiusX = coordinateSpace.convertX(radius);
+            drawRadiusY = coordinateSpace.convertY(radius);
+        }
     }
 }
