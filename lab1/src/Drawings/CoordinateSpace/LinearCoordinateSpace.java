@@ -1,7 +1,6 @@
 package Drawings.CoordinateSpace;
 
 import Drawings.graphicElements.Drawable;
-import Matrix.Matrix;
 
 import java.awt.*;
 
@@ -124,5 +123,14 @@ public class LinearCoordinateSpace implements CoordinateSpace {
                 drawPoints = coordinateSpace.convert(points);
             }
         };
+    }
+
+    public void countMouseCoordinates(Mouse mouse) {
+        mouse.x = deConvert(mouse.x, userMinX, userMaxX, realMaxX);
+        mouse.y = deConvert(mouse.y, userMinY, userMaxY, realMaxY);
+    }
+
+    private int deConvert(int num, int userMin, int userMax, int realMax) {
+        return num * (userMax - userMin) / realMax + userMin;
     }
 }

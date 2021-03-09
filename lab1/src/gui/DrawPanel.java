@@ -1,10 +1,7 @@
 package gui;
 
-import Drawings.CoordinateSpace.CoordinateSpace;
-import Drawings.CoordinateSpace.LinearCoordinateSpace;
-import Drawings.graphicElements.Circle;
-import Drawings.graphicElements.Drawable;
-import Drawings.graphicElements.Triangle;
+import Drawings.CoordinateSpace.*;
+import Drawings.graphicElements.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,6 +19,7 @@ public abstract class DrawPanel extends JPanel {
     private DrawPanel drawPanel = this;
     protected boolean showGrid = false;
     private Drawable grid;
+    protected Mouse mouse;
 
     public DrawPanel() {
         initElements();
@@ -35,6 +33,7 @@ public abstract class DrawPanel extends JPanel {
         elementsCapacity = 100;
         elementsAmount = 0;
         elements = new Drawable[elementsCapacity];
+        mouse = new Mouse();
     }
 
     private void setTimer(int period) {
@@ -72,6 +71,9 @@ public abstract class DrawPanel extends JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
+        mouse.x = MouseInfo.getPointerInfo().getLocation().x - getLocationOnScreen().x;
+        mouse.y = MouseInfo.getPointerInfo().getLocation().y - getLocationOnScreen().y;
+        coordinateSpace.countMouseCoordinates(mouse);
         draw();
         for (int elem = 0; elem < elementsAmount; elem++)
             elements[elem].draw(g);
@@ -96,20 +98,20 @@ public abstract class DrawPanel extends JPanel {
     protected abstract void draw();
 
     protected Triangle makeTriangle(int x1, int y1, int x2, int y2, int x3, int y3) {
-        Triangle triangle;
-
-        triangle = new Triangle(x1, y1, x2, y2, x3, y3);
-        triangle.setCoordinateSpace(coordinateSpace);
-        addElement(triangle);
-        return triangle;
+        return (Triangle) makeElement(new Triangle(x1, y1, x2, y2, x3, y3));
     }
 
     protected Circle makeCircle(int x, int y, int radius) {
-        Circle circle;
+        return (Circle) makeElement(new Circle(x, y, radius));
+    }
 
-        circle = new Circle(x, y, radius);
-        circle.setCoordinateSpace(coordinateSpace);
-        addElement(circle);
-        return circle;
+    protected Line makeLine(int x1, int y1, int x2, int y2) {
+        return (Line) makeElement(new Line(x1, y1, x2, y2));
+    }
+
+    private DrawElement makeElement(DrawElement element) {
+        element.setCoordinateSpace(coordinateSpace);
+        addElement(element);
+        return element;
     }
 }

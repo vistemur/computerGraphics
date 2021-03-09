@@ -20,7 +20,7 @@ public abstract class DrawElement implements Drawable {
 
     @Override
     public void countDrawCoordinates() {
-        if (points != null)
+        if (points != null && coordinateSpace != null)
             drawPoints = coordinateSpace.convert(points);
         recountCoordinates();
     }

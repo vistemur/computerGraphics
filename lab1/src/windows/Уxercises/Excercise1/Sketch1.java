@@ -1,39 +1,28 @@
 package windows.Уxercises.Excercise1;
 
-import Drawings.graphicElements.Circle;
-import Drawings.graphicElements.Triangle;
-import Matrix.Matrix;
+import Drawings.graphicElements.*;
 import gui.DrawPanel;
 
 import java.awt.*;
 
 public class Sketch1 extends DrawPanel {
 
-    Triangle triangle;
-    Circle circle;
-
-    boolean visibility = true;
-    int x = 0;
-    int move = 1;
+    Circle circle1;
+    Circle circle2;
+    Line line;
 
     @Override
     protected void setup() {
         showGrid = true;
-        triangle = makeTriangle(0, 0, 0, 100, 100, 100);
-        circle = makeCircle(0, 0, 20);
-        circle.setColor(Color.ORANGE);
+        circle1 = makeCircle(-50, -20, 20);
+        circle2 = makeCircle(50, 30, 10);
+        line = makeLine(0, 0, 100, 100);
+        line.setColor(Color.red);
     }
 
     @Override
     protected void draw() {
-        visibility = !visibility;
-        triangle.setVisible(visibility);
-        circle.setColor(new Color((float) Math.random() % 1, (float) Math.random() % 1, (float) Math.random() % 1));
-        circle.setCenter(x, 0);
-        if (move > 0 && x >= 80)
-            move = -1;
-        else if (move < 0 && x <= -80)
-            move = 1;
-        x += move;
+        circle1.setCenter(mouse.x, mouse.y);
+        line.setPoints(mouse.x, mouse.y, 50, 30);
     }
 }

@@ -10,4 +10,5 @@ public interface CoordinateSpace {
     public int convertY(int num);
     public void setReal(int realMaxX, int realMaxY);
     public Drawable getGrid();
+    public void countMouseCoordinates(Mouse mouse);
 }
