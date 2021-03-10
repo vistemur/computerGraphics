@@ -22,6 +22,7 @@ public abstract class DrawPanel extends JPanel {
     protected boolean showGrid = false;
     private Drawable grid;
     protected Mouse mouse;
+    private Color backgroundColor;
 
     public DrawPanel() {
         initElements();
@@ -34,6 +35,7 @@ public abstract class DrawPanel extends JPanel {
     private void initElements() {
         elementsCapacity = 100;
         elementsAmount = 0;
+        backgroundColor = Color.MAGENTA;
         elements = new Drawable[elementsCapacity];
         mouse = new Mouse();
     }
@@ -52,6 +54,11 @@ public abstract class DrawPanel extends JPanel {
     protected void setCoordinateSpace(CoordinateSpace coordinateSpace) {
         this.coordinateSpace = coordinateSpace;
         setGrid();
+    }
+
+    protected void setBackgroundColor(Color backgroundColor) {
+        if (backgroundColor != null)
+            this.backgroundColor = backgroundColor;
     }
 
     private void setGrid()  {
@@ -73,13 +80,18 @@ public abstract class DrawPanel extends JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
-        setBackground(Color.MAGENTA);
+        clearScreen(g);
         countMouseCoordinates();
         draw();
         for (int elem = 0; elem < elementsAmount; elem++)
             elements[elem].draw(g);
         if (showGrid)
             this.grid.draw(g);
+    }
+
+    private void clearScreen(Graphics g) {
+        g.setColor(backgroundColor);
+        g.fillRect(0, 0, getWidth(), getHeight());
     }
 
     private void countMouseCoordinates() {
