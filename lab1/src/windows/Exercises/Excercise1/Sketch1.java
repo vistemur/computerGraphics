@@ -1,5 +1,6 @@
 package windows.Exercises.Excercise1;
 
+import Drawings.CoordinateSpace.LinearCoordinateSpace;
 import Drawings.graphicElements.*;
 import gui.DrawPanel;
 
@@ -23,7 +24,13 @@ public class Sketch1 extends DrawPanel {
         line = makeLine(0, 0, 50, 30);
         state = State.makingCircle1;
         setColors();
+        disableFill();
         makeEverythingInvisible();
+    }
+
+    private void disableFill() {
+        circle1.setFill(false);
+        circle2.setFill(false);
     }
 
     private void setColors() {
@@ -118,6 +125,8 @@ public class Sketch1 extends DrawPanel {
     private void countIntersectionPoints(Point circle1Center, int circle1Radius, Point circle2Center, int circle2Radius) {
         Point point0 = new Point();
         Point point1 = new Point();
+
+
 
         // make super cool formula
 

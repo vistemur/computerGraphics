@@ -11,6 +11,7 @@ public abstract class DrawElement implements Drawable {
     CoordinateSpace coordinateSpace = null;
     Color color = Color.black;
     boolean visible = true;
+    boolean fill = true;
 
     @Override
     public void setCoordinateSpace(CoordinateSpace coordinateSpace) {
@@ -37,6 +38,10 @@ public abstract class DrawElement implements Drawable {
 
     public void setVisible(boolean visible) {
         this.visible = visible;
+    }
+
+    public void setFill(boolean fill) {
+        this.fill = fill;
     }
 
     @Override

@@ -39,14 +39,17 @@ public class Circle extends DrawElement {
 
     @Override
     protected void display(Graphics g) {
-        g.fillOval(drawPoints[0][0] - drawRadiusX / 2, drawPoints[1][0] - drawRadiusY / 2, drawRadiusX, drawRadiusY);
+        if (fill)
+            g.fillOval(drawPoints[0][0] - drawRadiusX / 2, drawPoints[1][0] - drawRadiusY / 2, drawRadiusX, drawRadiusY);
+        else
+            g.drawOval(drawPoints[0][0] - drawRadiusX / 2, drawPoints[1][0] - drawRadiusY / 2, drawRadiusX, drawRadiusY);
     }
 
     @Override
     protected void recountCoordinates() {
         if (coordinateSpace != null) {
-            drawRadiusX = coordinateSpace.convertX(radius);
-            drawRadiusY = coordinateSpace.convertY(radius);
+            drawRadiusX = coordinateSpace.convertLengthX(radius);
+            drawRadiusY = coordinateSpace.convertLengthY(radius);
         }
     }
 }

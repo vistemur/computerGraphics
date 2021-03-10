@@ -40,7 +40,7 @@ public class LinearCoordinateSpace implements CoordinateSpace {
         return (num - userMin) * realMax / (userMax - userMin);
     }
 
-    public int convertX(int num) {
+    public int convertLengthX(int num) {
         int max, min;
 
        if (userMaxX > userMinX) {
@@ -53,7 +53,7 @@ public class LinearCoordinateSpace implements CoordinateSpace {
         return num * realMaxX / (max - min);
     }
 
-    public int convertY(int num) {
+    public int convertLengthY(int num) {
         int max, min;
 
         if (userMaxY > userMinY) {
@@ -131,6 +131,8 @@ public class LinearCoordinateSpace implements CoordinateSpace {
     }
 
     private int deConvert(int num, int userMin, int userMax, int realMax) {
+        if (realMax == 0)
+            return 0;
         return num * (userMax - userMin) / realMax + userMin;
     }
 }
