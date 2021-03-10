@@ -73,6 +73,7 @@ public abstract class DrawPanel extends JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
+        setBackground(Color.MAGENTA);
         countMouseCoordinates();
         draw();
         for (int elem = 0; elem < elementsAmount; elem++)
