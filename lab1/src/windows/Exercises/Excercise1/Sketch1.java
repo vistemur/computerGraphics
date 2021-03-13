@@ -1,6 +1,6 @@
 package windows.Exercises.Excercise1;
 
-import Drawings.CoordinateSpace.LinearCoordinateSpace;
+import Drawings.CoordinateSpace.*;
 import Drawings.graphicElements.*;
 import gui.DrawPanel;
 
@@ -19,6 +19,7 @@ public class Sketch1 extends DrawPanel {
 
     @Override
     protected void setup() {
+        setCoordinateSpace(new ConstantCoordinateSpace(-100, 100, 100, -100, 500, 500));
         showGrid = true;
         circle2 = makeCircle(50, 30, 10);
         circle1 = makeCircle(0, 0, 20);

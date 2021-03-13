@@ -9,12 +9,15 @@ public class LinearCoordinateSpace implements CoordinateSpace {
     int userMinX, userMaxX;
     int userMinY, userMaxY;
     int realMaxY, realMaxX;
+    int realMinY, realMinX;
 
     public LinearCoordinateSpace(int userMinX, int userMaxX, int userMinY, int userMaxY) {
         this.userMinX = userMinX;
         this.userMaxX = userMaxX;
         this.userMinY = userMinY;
         this.userMaxY = userMaxY;
+        realMinX = 0;
+        realMinY = 0;
     }
 
     public void setReal(int realMaxX, int realMaxY) {
@@ -30,14 +33,14 @@ public class LinearCoordinateSpace implements CoordinateSpace {
         pointsAmount = userCoordinates[0].length;
         realCoordinates = new int[2][pointsAmount];
         for (int c = 0; c < pointsAmount; c++) {
-            realCoordinates[0][c] = convert(userCoordinates[0][c], userMinX, userMaxX, realMaxX);
-            realCoordinates[1][c] = convert(userCoordinates[1][c], userMinY, userMaxY, realMaxY);
+            realCoordinates[0][c] = convert(userCoordinates[0][c], userMinX, userMaxX, realMinX, realMaxX);
+            realCoordinates[1][c] = convert(userCoordinates[1][c], userMinY, userMaxY, realMinY, realMaxY);
         }
         return realCoordinates;
     }
 
-    private int convert(int num, int userMin, int userMax, int realMax) {
-        return (num - userMin) * realMax / (userMax - userMin);
+    private int convert(int num, int userMin, int userMax, int realMin,  int realMax) {
+        return (num - userMin) * (realMax - realMin) / (userMax - userMin) + realMin;
     }
 
     public int convertLengthX(int num) {
@@ -50,7 +53,7 @@ public class LinearCoordinateSpace implements CoordinateSpace {
            max = userMinX;
            min = userMaxX;
        }
-        return num * realMaxX / (max - min);
+        return num * (realMaxX - realMinX) / (max - min);
     }
 
     public int convertLengthY(int num) {
@@ -63,7 +66,7 @@ public class LinearCoordinateSpace implements CoordinateSpace {
             max = userMinY;
             min = userMaxY;
         }
-        return num * realMaxY / (max - min);
+        return num * (realMaxY - realMinY) / (max - min);
     }
 
     public Drawable getGrid() {
@@ -100,11 +103,11 @@ public class LinearCoordinateSpace implements CoordinateSpace {
                 for (int counter = from; counter <= to; counter += (to - from) / amount) {
                     str = String.valueOf(counter);
                     if (osY) {
-                        y = convert(counter, userMinY, userMaxY, realMaxY);
+                        y = convert(counter, userMinY, userMaxY, realMinY, realMaxY);
                         g.drawLine(x - 10, y, x + 10, y);
                         g.drawString(str, x + 5, y + ((y > (realMaxY / 2)) ? -5 : 15));
                     } else {
-                        x = convert(counter, userMinX, userMaxX, realMaxX);
+                        x = convert(counter, userMinX, userMaxX, realMinX, realMaxX);
                         g.drawLine(x, y - 10, x, y + 10);
                         g.drawString(str, x - ((x > (realMaxX / 2)) ? str.length() * 10 : 0), y - 10);
                     }
@@ -126,13 +129,13 @@ public class LinearCoordinateSpace implements CoordinateSpace {
     }
 
     public void countMouseCoordinates(Mouse mouse) {
-        mouse.x = deConvert(mouse.x, userMinX, userMaxX, realMaxX);
-        mouse.y = deConvert(mouse.y, userMinY, userMaxY, realMaxY);
+        mouse.x = deConvert(mouse.x, userMinX, userMaxX, realMinX, realMaxX);
+        mouse.y = deConvert(mouse.y, userMinY, userMaxY, realMinY, realMaxY);
     }
 
-    private int deConvert(int num, int userMin, int userMax, int realMax) {
+    private int deConvert(int num, int userMin, int userMax, int realMin,  int realMax) {
         if (realMax == 0)
             return 0;
-        return num * (userMax - userMin) / realMax + userMin;
+        return (num - realMin) * (userMax - userMin) / (realMax - realMin) + userMin;
     }
 }
