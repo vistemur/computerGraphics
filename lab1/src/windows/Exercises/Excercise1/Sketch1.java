@@ -29,7 +29,6 @@ public class Sketch1 extends DrawPanel {
         setColors();
         disableFill();
         makeEverythingInvisible();
-        makeRectangle(0, 0, 10, 10);
     }
 
     private void disableFill() {

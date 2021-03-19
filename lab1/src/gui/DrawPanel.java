@@ -2,6 +2,7 @@ package gui;
 
 import Drawings.CoordinateSpace.*;
 import Drawings.graphicElements.*;
+import Drawings.graphicElements.Image;
 import Drawings.graphicElements.Rectangle;
 
 import javax.swing.*;
@@ -149,6 +150,10 @@ public abstract class DrawPanel extends JPanel {
 
     protected Rectangle makeRectangle(int x, int y, int width, int height) {
         return (Rectangle) makeElement(new Rectangle(x, y, width, height));
+    }
+
+    protected Image makeImage(String filePath, int x, int y, int width, int height) {
+        return (Image) makeElement(new Image(filePath, x, y, width, height));
     }
 
     private DrawElement makeElement(DrawElement element) {

@@ -1,21 +1,19 @@
 package navigation;
 
 import gui.NavigationButton;
+import windows.Exercises.Exercise2.Exercise2;
 import windows.MainMenu;
 import windows.Exercises.Excercise1.Exercise1;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 public class NavigationManager {
 
-    private JFrame frame;
+    private Frame frame;
     private navigation.Window currentWindow;
-    private final navigation.Window[] windows = {new MainMenu(), new Exercise1()};
+    private final navigation.Window[] windows = {new MainMenu(), new Exercise1(), new Exercise2()};
 
     public NavigationManager() {
         initFrame();
@@ -24,11 +22,7 @@ public class NavigationManager {
     }
 
     private void initFrame() {
-        frame = new JFrame();
-        frame.setSize(500, 400);
-        frame.setLocation(100, 100);
-        frame.setMinimumSize(new Dimension(100, 100));
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame = new Frame();
     }
 
     public void navigateTo(String to) {

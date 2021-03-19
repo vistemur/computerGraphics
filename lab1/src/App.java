@@ -9,8 +9,8 @@ public class App {
     }
 
     public void show() {
-//        navigationManager.navigateTo("MainMenu");
-        navigationManager.navigateTo("Exercise1");
+        navigationManager.navigateTo("MainMenu");
+//        navigationManager.navigateTo("Exercise1");
         navigationManager.show();
     }
 }

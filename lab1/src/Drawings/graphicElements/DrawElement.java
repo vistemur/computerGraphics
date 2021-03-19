@@ -51,6 +51,32 @@ public abstract class DrawElement implements Drawable {
             display(g);
     }
 
+    public int[][] getMatrix() {
+        int[][] matrix;
+
+        if (points.length > 0)
+            matrix = new int[points[0].length][2];
+        else
+            return new int[0][0];
+        for (int point = 0; point < matrix.length; point++) {
+            matrix[point][0] = points[0][point];
+            matrix[point][1] = points[1][point];
+        }
+        return matrix;
+    }
+
+    public void setMatrix(int[][] matrix) {
+        int[][] points;
+
+        points = new int[2][matrix.length];
+        for (int point = 0; point < matrix.length; point++) {
+            points[0][point] = matrix[point][0];
+            points[1][point] = matrix[point][1];
+        }
+        this.points = points;
+        countDrawCoordinates();
+    }
+
     protected void display(Graphics g) {}
     protected void recountCoordinates() {}
 }
