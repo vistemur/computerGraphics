@@ -58,9 +58,9 @@ public abstract class DrawPanel extends JPanel {
         setGrid();
     }
 
-    protected void setBackgroundColor(Color backgroundColor) {
-        if (backgroundColor != null)
-            this.backgroundColor = backgroundColor;
+    public void setBackground(Color color) {
+        if (color != null)
+            this.backgroundColor = color;
     }
 
     private void setGrid()  {
@@ -146,6 +146,10 @@ public abstract class DrawPanel extends JPanel {
 
     protected Line makeLine(int x1, int y1, int x2, int y2) {
         return (Line) makeElement(new Line(x1, y1, x2, y2));
+    }
+
+    protected Line makeLine(Point point1, Point point2) {
+        return (Line) makeElement(new Line(point1, point2));
     }
 
     protected Rectangle makeRectangle(int x, int y, int width, int height) {

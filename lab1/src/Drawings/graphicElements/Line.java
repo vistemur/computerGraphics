@@ -9,7 +9,12 @@ public class Line extends DrawElement {
     }
 
     public Line(Point point1, Point point2) {
-        this(point1.x, point1.y, point2.x, point2.y);
+        setPoints(point1, point2);
+    }
+
+    public void setPoints(Point point1, Point point2) {
+        setPoints(point1.x, point1.y, point2.x, point2.y);
+        countDrawCoordinates();
     }
 
     public void setPoints(int x1, int y1, int x2, int y2) {

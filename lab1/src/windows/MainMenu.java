@@ -8,7 +8,7 @@ public class MainMenu extends navigation.Window {
 
     private JPanel buttonsPanel;
     private JPanel infoPanel;
-    private final String[] buttonNames = {"1", "2"};
+    private final String[] buttonNames = {"1", "2", "3", "abcd"};
     private NavigationButton[] buttons;
 
     @Override
@@ -22,8 +22,15 @@ public class MainMenu extends navigation.Window {
         for (int c = 0; c < buttonNames.length; c++) {
             buttons[c] = new NavigationButton(buttonNames[c]);
         }
-
+        setButtonsText();
         setBackgroundColors();
+    }
+
+    private void setButtonsText() {
+        buttons[0].setText("1.10");
+        buttons[1].setText("1.1");
+        buttons[2].setText("1.2");
+        buttons[3].setText("ABCD");
     }
 
     private void setBackgroundColors() {

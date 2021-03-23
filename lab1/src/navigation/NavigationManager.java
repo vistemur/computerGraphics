@@ -1,7 +1,9 @@
 package navigation;
 
 import gui.NavigationButton;
+import windows.Exercises.ABCDMatrixTest.ABCDMatrixTest;
 import windows.Exercises.Exercise2.Exercise2;
+import windows.Exercises.Exercise3.Exercise3;
 import windows.MainMenu;
 import windows.Exercises.Excercise1.Exercise1;
 
@@ -13,7 +15,8 @@ public class NavigationManager {
 
     private Frame frame;
     private navigation.Window currentWindow;
-    private final navigation.Window[] windows = {new MainMenu(), new Exercise1(), new Exercise2()};
+    private final navigation.Window[] windows = {   new MainMenu(), new Exercise1(), new Exercise2(), new Exercise3(),
+                                                    new ABCDMatrixTest()};
 
     public NavigationManager() {
         initFrame();
