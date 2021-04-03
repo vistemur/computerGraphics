@@ -4,18 +4,18 @@ import Drawings.CoordinateSpace.CoordinateSpace;
 
 import java.awt.*;
 
-public abstract class DrawElement implements Drawable {
+public class DrawElement implements Drawable {
 
     int[][] points = null;
     int[][] drawPoints;
-    CoordinateSpace coordinateSpace = null;
+    static CoordinateSpace coordinateSpace = null;
     Color color = Color.black;
     boolean visible = true;
     boolean fill = true;
 
     @Override
     public void setCoordinateSpace(CoordinateSpace coordinateSpace) {
-        this.coordinateSpace = coordinateSpace;
+        DrawElement.coordinateSpace = coordinateSpace;
         countDrawCoordinates();
     }
 

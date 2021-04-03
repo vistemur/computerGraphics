@@ -8,7 +8,7 @@ public class MainMenu extends navigation.Window {
 
     private JPanel buttonsPanel;
     private JPanel infoPanel;
-    private final String[] buttonNames = {"1", "2", "3", "abcd"};
+    private final String[] buttonNames = {"Exercise1_01", "Exercise1_02", "Exercise1_10", "abcd"};
     private NavigationButton[] buttons;
 
     @Override
@@ -27,9 +27,9 @@ public class MainMenu extends navigation.Window {
     }
 
     private void setButtonsText() {
-        buttons[0].setText("1.10");
-        buttons[1].setText("1.1");
-        buttons[2].setText("1.2");
+        buttons[0].setText("1.1");
+        buttons[1].setText("1.2");
+        buttons[2].setText("1.10");
         buttons[3].setText("ABCD");
     }
 

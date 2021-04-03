@@ -25,6 +25,10 @@ public class LinearCoordinateSpace implements CoordinateSpace {
         this.realMaxY = realMaxY;
     }
 
+    public int[] getUserData() {
+        return new int[] {userMinX, userMaxX, userMinY, userMaxY};
+    }
+
     @Override
     public int[][] convert(int[][] userCoordinates) {
         int[][] realCoordinates;

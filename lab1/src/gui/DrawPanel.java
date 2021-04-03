@@ -4,6 +4,7 @@ import Drawings.CoordinateSpace.*;
 import Drawings.graphicElements.*;
 import Drawings.graphicElements.Image;
 import Drawings.graphicElements.Rectangle;
+import Drawings.graphicElements.Support.LineFormula;
 
 import javax.swing.*;
 import java.awt.*;
@@ -54,6 +55,7 @@ public abstract class DrawPanel extends JPanel {
     }
 
     protected void setCoordinateSpace(CoordinateSpace coordinateSpace) {
+        new DrawElement().setCoordinateSpace(coordinateSpace);
         this.coordinateSpace = coordinateSpace;
         setGrid();
     }
@@ -143,14 +145,11 @@ public abstract class DrawPanel extends JPanel {
     protected Circle makeCircle(int x, int y, int radius) {
         return (Circle) makeElement(new Circle(x, y, radius));
     }
+    protected Circle makeCircle(Point point, int radius) { return (Circle) makeElement(new Circle(point, radius)); }
 
-    protected Line makeLine(int x1, int y1, int x2, int y2) {
-        return (Line) makeElement(new Line(x1, y1, x2, y2));
-    }
-
-    protected Line makeLine(Point point1, Point point2) {
-        return (Line) makeElement(new Line(point1, point2));
-    }
+    protected Line makeLine(int x1, int y1, int x2, int y2) { return (Line) makeElement(new Line(x1, y1, x2, y2)); }
+    protected Line makeLine(Point point1, Point point2) { return (Line) makeElement(new Line(point1, point2)); }
+    protected Line makeLine(LineFormula lineFormula) { return (Line) makeElement(new Line(lineFormula)); }
 
     protected Rectangle makeRectangle(int x, int y, int width, int height) {
         return (Rectangle) makeElement(new Rectangle(x, y, width, height));

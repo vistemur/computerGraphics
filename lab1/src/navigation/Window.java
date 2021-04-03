@@ -27,5 +27,5 @@ public abstract class Window {
 
     protected abstract void init();
     protected abstract void layout(JPanel panel);
-    public void resize(int width, int height) {};
+    public void resize(int width, int height) {}
 }

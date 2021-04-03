@@ -1,24 +1,24 @@
 package navigation;
 
 import gui.NavigationButton;
-import windows.Exercises.ABCDMatrixTest.ABCDMatrixTest;
-import windows.Exercises.Exercise2.Exercise2;
-import windows.Exercises.Exercise3.Exercise3;
+import windows.Exercises.lab1.ABCDMatrixTest.ABCDMatrixTest;
+import windows.Exercises.lab1.Exercise1_01.Exercise1_01;
+import windows.Exercises.lab1.Exercise1_02.Exercise1_02;
 import windows.MainMenu;
-import windows.Exercises.Excercise1.Exercise1;
+import windows.Exercises.lab1.Exercise1_10.Exercise1_10;
 
 import javax.swing.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
+import java.awt.event.*;
 
 public class NavigationManager {
 
     private Frame frame;
     private navigation.Window currentWindow;
-    private final navigation.Window[] windows = {   new MainMenu(), new Exercise1(), new Exercise2(), new Exercise3(),
+    private navigation.Window[] windows = {   new MainMenu(), new Exercise1_10(), new Exercise1_01(), new Exercise1_02(),
                                                     new ABCDMatrixTest()};
 
-    public NavigationManager() {
+    public NavigationManager(Window ... windows) {
+        this.windows = windows;
         initFrame();
         addActions();
         setNavigationButtonsManager();
@@ -46,13 +46,17 @@ public class NavigationManager {
     }
 
     private void updateFrame() {
-        currentWindow.resize(frame.getWidth() , frame.getHeight());
+        changeSize();
         SwingUtilities.updateComponentTreeUI(frame);
     }
 
     private void clear() {
         frame.remove(currentWindow.getPanel());
         currentWindow.deinitialize();
+    }
+
+    private void changeSize() {
+        currentWindow.resize(frame.getWidth(), frame.getHeight());
     }
 
     public void show() {
@@ -62,11 +66,11 @@ public class NavigationManager {
     public void addActions() {
         frame.addComponentListener(new ComponentAdapter() {
             public void componentResized(ComponentEvent event) {
-                currentWindow.resize(frame.getWidth() , frame.getHeight());
+                changeSize();
             }
 
             public void componentMoved(ComponentEvent event) {
-                currentWindow.resize(frame.getWidth(), frame.getHeight());
+                changeSize();
             }
         });
     }

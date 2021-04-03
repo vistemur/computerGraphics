@@ -22,6 +22,18 @@ public class Triangle extends DrawElement {
         countDrawCoordinates();
     }
 
+    public Point getPoint(int pointNumber) {
+        pointNumber = Math.abs(pointNumber) % 3;
+        return new Point(points[0][pointNumber], points[1][pointNumber]);
+    }
+
+    public void setPoint(int pointNumber, Point point) {
+        pointNumber = Math.abs(pointNumber) % 3;
+        points[0][pointNumber] = point.x;
+        points[1][pointNumber] = point.y;
+        countDrawCoordinates();
+    }
+
     protected void display(Graphics g) {
         g.fillPolygon(new Polygon(drawPoints[0], drawPoints[1], 3));
     }
