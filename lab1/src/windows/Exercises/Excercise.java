@@ -48,6 +48,10 @@ public abstract class Excercise extends Window {
         resizeElements(width, height - 140);
     }
 
+    public String getDescription() {
+       return "description";
+    }
+
     protected abstract void initialize();
     protected abstract void layoutElements(JPanel panel);
     protected abstract void resizeElements(int width, int height);

@@ -61,4 +61,11 @@ public class ABCDMatrixTest extends Excercise {
         optionsPanel.setPreferredSize(new Dimension(width, optionPanelHeight));
         sketch.setPreferredSize(new Dimension(width, height - optionPanelHeight - 10));
     }
+
+    @Override
+    public String getDescription() {
+        return """
+                thanks for 17/17 on the first test ^w^
+                """;
+    }
 }

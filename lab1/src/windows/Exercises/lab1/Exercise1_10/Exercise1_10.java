@@ -25,4 +25,13 @@ public class Exercise1_10 extends Excercise {
     protected void resizeElements(int width, int height) {
         sketch.setPreferredSize(new Dimension(width, height));
     }
+
+    @Override
+    public String getDescription() {
+        return """
+                the only thing we needed to do🐺<br>
+                our manager is doing nothing,<br>
+                because we don't have manager🐺
+                """;
+    }
 }

@@ -14,8 +14,7 @@ public class NavigationManager {
 
     private Frame frame;
     private navigation.Window currentWindow;
-    private navigation.Window[] windows = {   new MainMenu(), new Exercise1_10(), new Exercise1_01(), new Exercise1_02(),
-                                                    new ABCDMatrixTest()};
+    private navigation.Window[] windows;
 
     public NavigationManager(Window ... windows) {
         this.windows = windows;
@@ -29,11 +28,19 @@ public class NavigationManager {
     }
 
     public void navigateTo(String to) {
+        try {
+            setWindow(getWindow(to));
+        } catch (Exception e) {
+            System.out.print("ERROR " + e.getMessage());
+        }
+    }
+
+    public Window getWindow(String to) throws Exception {
         for (navigation.Window window : windows)
             if (window.getName().toLowerCase().contains(to.toLowerCase())) {
-                setWindow(window);
-                break;
+                return window;
             }
+        throw new Exception("unable to find window named " + to);
     }
 
     private void setWindow(Window window) {

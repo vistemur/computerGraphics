@@ -24,4 +24,12 @@ public class Exercise1_01 extends Excercise {
     protected void resizeElements(int width, int height) {
         sketch.setPreferredSize(new Dimension(width, height));
     }
+
+    @Override
+    public String getDescription() {
+        return """
+                description of exercise 1<br>
+                just to be clear, I don't know what is going on🐺
+                """;
+    }
 }

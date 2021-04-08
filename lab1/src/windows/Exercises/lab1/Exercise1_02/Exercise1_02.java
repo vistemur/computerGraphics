@@ -23,4 +23,12 @@ public class Exercise1_02 extends Excercise {
     protected void resizeElements(int width, int height) {
         sketch.setPreferredSize(new Dimension(width, height));
     }
+
+    @Override
+    public String getDescription() {
+        return """
+                there is only 1 triangle,<br>
+                another one is his enemy...he lives in the mirror
+                """;
+    }
 }

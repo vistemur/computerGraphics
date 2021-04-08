@@ -1,13 +1,17 @@
 package windows;
 import gui.NavigationButton;
+import windows.Exercises.Excercise;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class MainMenu extends navigation.Window {
 
     private JPanel buttonsPanel;
     private JPanel infoPanel;
+    private JLabel descriptionLabel;
     private final String[] buttonNames = {"Exercise1_01", "Exercise1_02", "Exercise1_10", "abcd"};
     private NavigationButton[] buttons;
 
@@ -17,10 +21,25 @@ public class MainMenu extends navigation.Window {
         buttonsPanel.setLayout(new GridLayout(buttonNames.length, 1));
 
         infoPanel = new JPanel();
+        descriptionLabel = new JLabel();
 
         buttons = new NavigationButton[buttonNames.length];
-        for (int c = 0; c < buttonNames.length; c++) {
-            buttons[c] = new NavigationButton(buttonNames[c]);
+        for (int counter = 0; counter < buttonNames.length; counter++) {
+            buttons[counter] = new NavigationButton(buttonNames[counter]);
+            String description = buttonNames[counter];
+            try {
+                description = ((Excercise) navigationManager.getWindow(buttonNames[counter])).getDescription();
+            } catch (Exception e) {
+                System.out.print("ERROR " + e.getMessage());
+            }
+            String finalDescription = "<html>" + description + "</html>";
+            buttons[counter].addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseEntered(MouseEvent e) {
+                    super.mouseEntered(e);
+                    MainMenu.this.descriptionLabel.setText(finalDescription);
+                }
+            });
         }
         setButtonsText();
         setBackgroundColors();
@@ -36,6 +55,7 @@ public class MainMenu extends navigation.Window {
     private void setBackgroundColors() {
         buttonsPanel.setBackground(Color.CYAN);
         infoPanel.setBackground(Color.BLUE);
+        descriptionLabel.setBackground(Color.GREEN);
     }
 
     @Override
@@ -43,6 +63,7 @@ public class MainMenu extends navigation.Window {
         for (JButton button : buttons)
             buttonsPanel.add(button);
         panel.add(buttonsPanel, BorderLayout.LINE_START);
+        infoPanel.add(descriptionLabel, BorderLayout.CENTER);
         panel.add(infoPanel, BorderLayout.LINE_END);
 
         panel.setBackground(Color.RED);

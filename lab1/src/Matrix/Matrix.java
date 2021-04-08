@@ -13,9 +13,13 @@ public class Matrix {
             width = 0;
         answer = new int[height][width];
 
-        for (row = 0; row < height; row++)
-            for (column = 0; column < width; column++)
-                answer[row][column] = countCell(m1, m2, row, column);
+        try {
+            for (row = 0; row < height; row++)
+                for (column = 0; column < width; column++)
+                    answer[row][column] = countCell(m1, m2, row, column);
+        } catch (Throwable e) {
+            System.out.println("matrix multiply error");
+        }
         return answer;
     }
 
@@ -52,10 +56,25 @@ public class Matrix {
         return cell;
     }
 
+    public static int[][] resize(int[][] matrix, int width, int height) {
+        int[][] answer;
+
+        answer = new int[height][width];
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                if (matrix.length > y && matrix[y].length > x)
+                    answer[y][x] = matrix[y][x];
+                else
+                    answer[y][x] = 1;
+            }
+        }
+        return answer;
+    }
+
     public static void print(int[][] m) {
-        for (int c1 = 0; c1 < m.length; c1++) {
-            for (int c2 = 0; c2 < m[c1].length; c2++)
-                System.out.print(m[c1][c2] + " ");
+        for (int[] ints : m) {
+            for (int anInt : ints)
+                System.out.print(anInt + " ");
             System.out.println();
         }
     }
