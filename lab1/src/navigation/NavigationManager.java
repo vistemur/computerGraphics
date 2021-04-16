@@ -1,11 +1,6 @@
 package navigation;
 
 import gui.NavigationButton;
-import windows.Exercises.lab1.ABCDMatrixTest.ABCDMatrixTest;
-import windows.Exercises.lab1.Exercise1_01.Exercise1_01;
-import windows.Exercises.lab1.Exercise1_02.Exercise1_02;
-import windows.MainMenu;
-import windows.Exercises.lab1.Exercise1_10.Exercise1_10;
 
 import javax.swing.*;
 import java.awt.event.*;
