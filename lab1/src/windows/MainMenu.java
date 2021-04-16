@@ -21,7 +21,7 @@ public class MainMenu extends navigation.Window {
 
     private static int menuNumber = 0; // labNumber - 1
     private final String[][][] labStrings = {   {{"Exercise1_01", "1"}, {"Exercise1_02", "2"}, {"Exercise1_10", "10"}, {"ABCDMatrixTest", "abcd"}},
-                                                {{"Exercise1_01", "01"}, {"Exercise1_02", "02"}}};
+                                                {{"Exercise2_10", "10"}}};
 
     @Override
     protected void init() {
@@ -32,7 +32,6 @@ public class MainMenu extends navigation.Window {
         nextButton.setPreferredSize(new Dimension(80, 80));
         previousButton = new JButton("previous");
         previousButton.setPreferredSize(new Dimension(80, 80));
-        setMenuNumber(menuNumber);
 
         buttonsPanel = new JPanel();
         buttonsPanel.setLayout(new GridLayout(labStrings[menuNumber].length, 1));
@@ -40,8 +39,7 @@ public class MainMenu extends navigation.Window {
         infoPanel = new JPanel();
         descriptionLabel = new JLabel();
 
-        setupButtons();
-        addButtons();
+        setMenu(menuNumber);
         addTopButtonsActions();
         setBackgroundColors();
     }
@@ -52,17 +50,17 @@ public class MainMenu extends navigation.Window {
     }
 
     private void nextLab() {
-        setMenuNumber(menuNumber + 1);
+        setMenu(menuNumber + 1);
     }
 
     private void previousLab() {
-        setMenuNumber(menuNumber - 1);
+        setMenu(menuNumber - 1);
     }
 
-    public void setMenuNumber(int menuNumber) {
+    public void setMenu(int menuNumber) {
         if (menuNumber >= labStrings.length || menuNumber < 0)
             return;
-        this.menuNumber = menuNumber;
+        MainMenu.menuNumber = menuNumber;
         if (menuNumber == 0)
             previousButton.setVisible(false);
         if (menuNumber == labStrings.length - 1)
@@ -130,7 +128,6 @@ public class MainMenu extends navigation.Window {
         panel.add(buttonsPanel, BorderLayout.LINE_START);
         infoPanel.add(descriptionLabel, BorderLayout.CENTER);
         panel.add(infoPanel, BorderLayout.LINE_END);
-
         panel.setBackground(Color.RED);
     }
 
@@ -142,6 +139,7 @@ public class MainMenu extends navigation.Window {
                 buttonsPanel.add(button);
         } catch (Exception e) {
             System.out.print("ERROR: unable to add buttons");
+            e.printStackTrace();
         }
     }
 
@@ -150,5 +148,18 @@ public class MainMenu extends navigation.Window {
         topPanel.setPreferredSize(new Dimension(width - 15, 100));
         buttonsPanel.setPreferredSize(new Dimension(200, height - 140));
         infoPanel.setPreferredSize(new Dimension(width - 220, height - 140));
+    }
+
+    @Override
+    public void deinitialize() {
+        super.deinitialize();
+        nextButton = null;
+        previousButton = null;
+        labNumberLabel = null;
+        topPanel = null;
+        buttonsPanel = null;
+        infoPanel = null;
+        descriptionLabel = null;
+        buttons = null;
     }
 }

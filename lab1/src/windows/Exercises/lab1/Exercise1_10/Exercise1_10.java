@@ -27,6 +27,12 @@ public class Exercise1_10 extends Excercise {
     }
 
     @Override
+    public void deinitialize() {
+        super.deinitialize();
+        sketch = null;
+    }
+
+    @Override
     public String getDescription() {
         return """
                 the only thing we needed to do🐺<br>

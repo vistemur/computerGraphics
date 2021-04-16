@@ -1,4 +1,4 @@
-package windows.Exercises.lab1.Exercise1_02;
+package windows.Exercises.lab2.Excercise2_10;
 
 import gui.DrawPanel;
 import windows.Exercises.Excercise;
@@ -6,7 +6,7 @@ import windows.Exercises.Excercise;
 import javax.swing.*;
 import java.awt.*;
 
-public class Exercise1_02 extends Excercise {
+public class Exercise2_10 extends Excercise {
 
     DrawPanel sketch;
 
@@ -34,8 +34,7 @@ public class Exercise1_02 extends Excercise {
     @Override
     public String getDescription() {
         return """
-                there is only 1 triangle,<br>
-                another one is his enemy...he lives in the mirror
+                finally lab2
                 """;
     }
 }

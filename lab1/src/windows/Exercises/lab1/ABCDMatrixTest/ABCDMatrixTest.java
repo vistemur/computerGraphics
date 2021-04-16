@@ -63,6 +63,16 @@ public class ABCDMatrixTest extends Excercise {
     }
 
     @Override
+    public void deinitialize() {
+        super.deinitialize();
+        sketch = null;
+        optionsPanel = null;
+        applyMatrixButton = null;
+        resetButton = null;
+        matrixPanel = null;
+    }
+
+    @Override
     public String getDescription() {
         return """
                 thanks for 17/17 on the first test ^w^
