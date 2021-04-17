@@ -24,6 +24,7 @@ public class ABCDMatrixTest extends Excercise {
         initMatrixPanel();
         setActions();
         setColors();
+        setColoredLayout();
     }
 
     private void initMatrixPanel() {

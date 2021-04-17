@@ -17,16 +17,13 @@ public abstract class Excercise extends Window {
     protected void init() {
         header = new JPanel();
         header.setLayout(new FlowLayout());
-        header.setBackground(Color.green);
 
         spacer = new JPanel();
-        header.setBackground(Color.green);
 
         backButton = new NavigationButton("MainMenu");
         backButton.setPreferredSize(new Dimension(80, 80));
 
         content = new JPanel();
-        content.setBackground(Color.MAGENTA);
         initialize();
     }
 
@@ -37,7 +34,12 @@ public abstract class Excercise extends Window {
         panel.add(header, BorderLayout.PAGE_START);
         layoutElements(content);
         panel.add(content, BorderLayout.CENTER);
-        panel.setBackground(Color.BLACK);
+    }
+
+    protected void setColoredLayout() {
+        header.setBackground(Color.green);
+        header.setBackground(Color.green);
+        content.setBackground(Color.MAGENTA);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package Drawings.graphicElements;
 
 import Drawings.CoordinateSpace.CoordinateSpace;
+import Matrix.Matrix;
 
 import java.awt.*;
 
@@ -75,6 +76,46 @@ public class DrawElement implements Drawable {
         }
         this.points = points;
         countDrawCoordinates();
+    }
+
+    public void move(int x, int y) {
+        int[][] matrix = getMatrix();
+        setMatrix(Matrix.multiply(Matrix.resize(matrix, 3, matrix.length), new int[][] {{1, 0, 0}, {0, 1, 0}, {x, y, 1}}));
+    }
+
+    // precision is too bad
+    public void rotate(double radians) {
+        rotate(getCenter(), radians);
+    }
+
+    public void rotate(Point point, double radians) {
+        move(-point.x, -point.y);
+        setMatrix(Matrix.multiply(getMatrix(), new double[][] {{Math.cos(radians), Math.sin(radians)}, {-Math.sin(radians), Math.cos(radians)}}));
+        move(point.x, point.y);
+    }
+
+    public void resize(double multiplier) {
+        Point center = getCenter();
+        move(-center.x, -center.y);
+        setMatrix(Matrix.multiply(getMatrix(), new double[][] {{multiplier, 0}, {0, multiplier}}));
+        move(center.x, center.y);
+    }
+
+    public Point getCenter() {
+        Point center;
+
+        center = new Point(0, 0);
+        if (points != null) {
+            if (points.length == 2 && points[0].length > 0) {
+                for (int point = 0; point < points[0].length; point++) {
+                    center.x += points[0][point];
+                    center.y += points[1][point];
+                }
+                center.x /= points[0].length;
+                center.y /= points[0].length;
+            }
+        }
+        return center;
     }
 
     protected void display(Graphics g) {}

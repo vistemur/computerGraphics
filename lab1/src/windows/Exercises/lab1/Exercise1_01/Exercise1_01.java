@@ -13,6 +13,7 @@ public class Exercise1_01 extends Excercise {
     @Override
     protected void initialize() {
         sketch = new Sketch();
+        setColoredLayout();
     }
 
     @Override
