@@ -8,7 +8,7 @@ import java.awt.geom.Point2D;
 
 public class MovableCircles {
 
-    private int circlesAmount;
+    public int circlesAmount;
     public Circle[] circles;
     private Circle hoveredCircle;
     private Circle chosenCircle;

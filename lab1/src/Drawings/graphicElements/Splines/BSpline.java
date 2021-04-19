@@ -42,19 +42,4 @@ public class BSpline extends Spline {
     private double t(int i) {
         return ((double) i) / buildingPoints.length;
     }
-
-    private Point[] getPoints(int i) {
-        Point[] points = new Point[2];
-        try {
-            points[0] = buildingPoints[i];
-        } catch (Exception e) {
-            points[0] = new Point();
-        }
-        try {
-            points[1] = buildingPoints[i + 1];
-        } catch (Exception e) {
-            points[1] = new Point();
-        }
-        return points;
-    }
 }

@@ -20,21 +20,50 @@ public class Sketch extends DrawPanel {
     protected void setup() {
         buildCoordinateSpace();
         setBackground(Color.white);
-        pointsAmount = 4;
+        pointsAmount = 3;
         makeMovableCircles(pointsAmount);
         lineSpline = makeLineSpline(movableCircles.getPoints());
         buildSpline();
-
-        setData(7, 3);
     }
 
     public void setData(int pointsAmount, int k) {
-        for (Circle circle : movableCircles.circles)
-            removeElement(circle);
-        makeMovableCircles(pointsAmount);
+        setPointsAmount(pointsAmount);
+        setK(k);
+    }
+
+    public void setPointsAmount(int pointsAmount) {
+        if (pointsAmount == movableCircles.circles.length + 1) {
+            int c = 0;
+            Circle[] circles = new Circle[pointsAmount];
+            while (c < movableCircles.circles.length) {
+                circles[c] = movableCircles.circles[c];
+                c++;
+            }
+            circles[c] = makeCircle(circles[c - 1].getCenter().x + size / 20, circles[c - 1].getCenter().y, size / 50);
+            movableCircles.circles = circles;
+            movableCircles.circlesAmount = pointsAmount;
+        } else if (pointsAmount == movableCircles.circles.length - 1) {
+            int c = 0;
+            Circle[] circles = new Circle[pointsAmount];
+            while (c < pointsAmount) {
+                circles[c] = movableCircles.circles[c];
+                c++;
+            }
+            removeElement(movableCircles.circles[c]);
+            movableCircles.circles = circles;
+            movableCircles.circlesAmount = pointsAmount;
+        } else {
+            for (Circle circle : movableCircles.circles)
+                removeElement(circle);
+            makeMovableCircles(pointsAmount);
+        }
         lineSpline.setPoints(movableCircles.getPoints());
         bSpline.setPoints(movableCircles.getPoints());
+    }
+
+    public void setK(int k) {
         bSpline.setK(k);
+        bSpline.setPoints(movableCircles.getPoints());
     }
 
     private void buildCoordinateSpace() {
