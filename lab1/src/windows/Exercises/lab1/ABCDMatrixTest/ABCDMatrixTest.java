@@ -49,7 +49,7 @@ public class ABCDMatrixTest extends Excercise {
 
     @Override
     protected void layoutElements(JPanel panel) {
-        panel.setLayout(new FlowLayout());
+        optionsPanel.setLayout(new FlowLayout());
         optionsPanel.add(resetButton);
         optionsPanel.add(matrixPanel);
         optionsPanel.add(applyMatrixButton);

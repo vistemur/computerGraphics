@@ -7,12 +7,12 @@ import java.awt.*;
 
 public class DrawElement implements Drawable {
 
-    int[][] points = null;
-    int[][] drawPoints;
-    static CoordinateSpace coordinateSpace = null;
-    Color color = Color.black;
-    boolean visible = true;
-    boolean fill = true;
+    protected int[][] points = null;
+    protected int[][] drawPoints;
+    protected static CoordinateSpace coordinateSpace = null;
+    private Color color = Color.black;
+    private boolean visible = true;
+    protected boolean fill = true;
 
     @Override
     public void setCoordinateSpace(CoordinateSpace coordinateSpace) {

@@ -4,6 +4,8 @@ import Drawings.CoordinateSpace.*;
 import Drawings.graphicElements.*;
 import Drawings.graphicElements.Image;
 import Drawings.graphicElements.Rectangle;
+import Drawings.graphicElements.Splines.*;
+import Drawings.graphicElements.Splines.Spline;
 import Drawings.graphicElements.Support.LineFormula;
 
 import javax.swing.*;
@@ -79,6 +81,19 @@ public abstract class DrawPanel extends JPanel {
         } else {
             elements[elementsAmount] = element;
             elementsAmount++;
+        }
+    }
+
+    protected void removeElement(Drawable element) {
+        for (int elem = 0; elem < elementsAmount; elem++) {
+            if (elements[elem] == element) {
+                while (elem < elementsAmount) {
+                    elements[elem] = elements[elem + 1];
+                    elem += 1;
+                }
+                elements[elem] = null;
+                elementsAmount -= 1;
+            }
         }
     }
 
@@ -158,6 +173,14 @@ public abstract class DrawPanel extends JPanel {
     protected Image makeImage(String filePath, int x, int y, int width, int height) {
         return (Image) makeElement(new Image(filePath, x, y, width, height));
     }
+
+    protected Spline makeSpline() {
+        return (Spline) makeElement(new Spline());
+    }
+
+    protected LineSpline makeLineSpline(Point ... points) { return (LineSpline) makeElement(new LineSpline(points)); }
+    protected BSpline makeBSpline() { return (BSpline) makeElement(new BSpline()); }
+
 
     private DrawElement makeElement(DrawElement element) {
         element.setCoordinateSpace(coordinateSpace);
