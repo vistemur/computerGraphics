@@ -8,6 +8,7 @@ public class ABCDMatrixSketch extends DrawPanel {
 
     Triangle triangle;
 
+
     @Override
     protected void setup() {
         showGrid = true;
