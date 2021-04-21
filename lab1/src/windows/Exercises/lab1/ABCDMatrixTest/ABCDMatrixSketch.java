@@ -15,9 +15,7 @@ public class ABCDMatrixSketch extends DrawPanel {
     }
 
     @Override
-    protected void draw() {
-
-    }
+    protected void draw() {}
 
     public void applyMatrix(double[][] matrix) {
         triangle.setMatrix(Matrix.multiply(triangle.getMatrix(), matrix));
