@@ -16,8 +16,8 @@ public class Exercise2_10 extends Excercise {
     @Override
     protected void initialize() {
         sketch = new Sketch();
-        kPanel = new VerticalValuePanel("K", new KChanger(), 2, 6, 3);
-        pointsPanel = new VerticalValuePanel("points", new PointsAmountChanger(), 0, 10, 5);
+        kPanel = new VerticalValuePanel("K", new KChanger(), 1, 6, 3);
+        pointsPanel = new VerticalValuePanel("points", new PointsAmountChanger(), 1, 20, 5);
         sketch.setData(5, 3);
     }
 

@@ -1,18 +1,19 @@
 package Drawings.graphicElements;
 
 import java.awt.*;
+import Drawings.graphicElements.Support.Point;
 
 public class Triangle extends DrawElement {
 
-    public Triangle(int x1, int y1, int x2, int y2, int x3, int y3) {
-        points = new int[][] {{x1, x2, x3}, {y1, y2, y3}};
+    public Triangle(float x1, float y1, float x2, float y2, float x3, float y3) {
+        points = new float[][] {{x1, x2, x3}, {y1, y2, y3}};
     }
 
     public void setPoints(Point point1, Point point2, Point point3) {
         setPoints(point1.x, point1.y, point2.x, point2.y, point3.x, point3.y);
     }
 
-    public void setPoints(int x1, int y1, int x2, int y2, int x3, int y3) {
+    public void setPoints(float x1, float y1, float x2, float y2, float x3, float y3) {
         points[0][0] = x1;
         points[0][1] = x2;
         points[0][2] = x3;

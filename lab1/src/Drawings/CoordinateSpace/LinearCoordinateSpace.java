@@ -6,12 +6,12 @@ import java.awt.*;
 
 public class LinearCoordinateSpace implements CoordinateSpace {
 
-    int userMinX, userMaxX;
-    int userMinY, userMaxY;
+    float userMinX, userMaxX;
+    float userMinY, userMaxY;
     int realMaxY, realMaxX;
     int realMinY, realMinX;
 
-    public LinearCoordinateSpace(int userMinX, int userMaxX, int userMinY, int userMaxY) {
+    public LinearCoordinateSpace(float userMinX, float userMaxX, float userMinY, float userMaxY) {
         this.userMinX = userMinX;
         this.userMaxX = userMaxX;
         this.userMinY = userMinY;
@@ -25,12 +25,12 @@ public class LinearCoordinateSpace implements CoordinateSpace {
         this.realMaxY = realMaxY;
     }
 
-    public int[] getUserData() {
-        return new int[] {userMinX, userMaxX, userMinY, userMaxY};
+    public float[] getUserData() {
+        return new float[] {userMinX, userMaxX, userMinY, userMaxY};
     }
 
     @Override
-    public int[][] convert(int[][] userCoordinates) {
+    public int[][] convert(float[][] userCoordinates) {
         int[][] realCoordinates;
         int pointsAmount;
 
@@ -43,12 +43,12 @@ public class LinearCoordinateSpace implements CoordinateSpace {
         return realCoordinates;
     }
 
-    private int convert(int num, int userMin, int userMax, int realMin,  int realMax) {
-        return (num - userMin) * (realMax - realMin) / (userMax - userMin) + realMin;
+    private int convert(float num, float userMin, float userMax, int realMin,  int realMax) {
+        return (int) ((num - userMin) * (realMax - realMin) / (userMax - userMin) + realMin);
     }
 
-    public int convertLengthX(int num) {
-        int max, min;
+    public int convertLengthX(float num) {
+        float max, min;
 
        if (userMaxX > userMinX) {
            max = userMaxX;
@@ -57,11 +57,11 @@ public class LinearCoordinateSpace implements CoordinateSpace {
            max = userMinX;
            min = userMaxX;
        }
-        return num * (realMaxX - realMinX) / (max - min);
+        return (int) (num * (realMaxX - realMinX) / (max - min));
     }
 
-    public int convertLengthY(int num) {
-        int max, min;
+    public int convertLengthY(float num) {
+        float max, min;
 
         if (userMaxY > userMinY) {
             max = userMaxY;
@@ -70,14 +70,14 @@ public class LinearCoordinateSpace implements CoordinateSpace {
             max = userMinY;
             min = userMaxY;
         }
-        return num * (realMaxY - realMinY) / (max - min);
+        return (int) (num * (realMaxY - realMinY) / (max - min));
     }
 
     public Drawable getGrid() {
         return new Drawable() {
 
             int[][] drawPoints = new int[2][4];
-            int[][] points;
+            float[][] points;
             CoordinateSpace coordinateSpace;
 
             @Override
@@ -89,14 +89,14 @@ public class LinearCoordinateSpace implements CoordinateSpace {
                 drawNumbers(g, userMinY, userMaxY, 5, true);
             }
 
-            private void drawNumbers(Graphics g, int from, int to, int amount, boolean osY) {
+            private void drawNumbers(Graphics g, float from, float to, int amount, boolean osY) {
                 int x, y;
                 String str;
 
                 x = 0;
                 y = 0;
                 if (from > to) {
-                    int temp = to;
+                    float temp = to;
                     to = from;
                     from = temp;
                 }
@@ -104,7 +104,7 @@ public class LinearCoordinateSpace implements CoordinateSpace {
                     x = drawPoints[0][2];
                 else
                     y = drawPoints[1][0];
-                for (int counter = from; counter <= to; counter += (to - from) / amount) {
+                for (float counter = from; counter <= to; counter += (to - from) / amount) {
                     str = String.valueOf(counter);
                     if (osY) {
                         y = convert(counter, userMinY, userMaxY, realMinY, realMaxY);
@@ -121,7 +121,7 @@ public class LinearCoordinateSpace implements CoordinateSpace {
             @Override
             public void setCoordinateSpace(CoordinateSpace coordinateSpace) {
                 this.coordinateSpace = coordinateSpace;
-                points = new int[][] {  {userMinX, userMaxX, (userMaxX + userMinX) / 2, (userMaxX + userMinX) / 2},
+                points = new float[][] {  {userMinX, userMaxX, (userMaxX + userMinX) / 2, (userMaxX + userMinX) / 2},
                                         {(userMaxY + userMinY) / 2, (userMaxY + userMinY) / 2, userMinY, userMaxY}};
             }
 
@@ -137,9 +137,9 @@ public class LinearCoordinateSpace implements CoordinateSpace {
         mouse.y = deConvert(mouse.y, userMinY, userMaxY, realMinY, realMaxY);
     }
 
-    private int deConvert(int num, int userMin, int userMax, int realMin,  int realMax) {
+    private float deConvert(float num, float userMin, float userMax, int realMin,  int realMax) {
         if (realMax == 0)
             return 0;
-        return (num - realMin) * (userMax - userMin) / (realMax - realMin) + userMin;
+        return ((num - realMin) * (userMax - userMin) / (realMax - realMin) + userMin);
     }
 }

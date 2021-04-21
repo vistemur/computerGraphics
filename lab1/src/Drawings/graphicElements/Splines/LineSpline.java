@@ -1,6 +1,6 @@
 package Drawings.graphicElements.Splines;
 
-import Drawings.graphicElements.Splines.Spline;
+import Drawings.graphicElements.Support.Point;
 
 import java.awt.*;
 import java.util.Arrays;

@@ -2,12 +2,13 @@ package Drawings.graphicElements;
 
 import Drawings.CoordinateSpace.CoordinateSpace;
 import Matrix.Matrix;
+import Drawings.graphicElements.Support.Point;
 
 import java.awt.*;
 
 public class DrawElement implements Drawable {
 
-    protected int[][] points = null;
+    protected float[][] points = null;
     protected int[][] drawPoints;
     protected static CoordinateSpace coordinateSpace = null;
     private Color color = Color.black;
@@ -27,7 +28,7 @@ public class DrawElement implements Drawable {
         recountCoordinates();
     }
 
-    protected void setPoints(int[][] points) {
+    protected void setPoints(float[][] points) {
         this.points = points;
         if (coordinateSpace != null)
             countDrawCoordinates();
@@ -52,13 +53,13 @@ public class DrawElement implements Drawable {
             display(g);
     }
 
-    public int[][] getMatrix() {
-        int[][] matrix;
+    public float[][] getMatrix() {
+        float[][] matrix;
 
         if (points.length > 0)
-            matrix = new int[points[0].length][2];
+            matrix = new float[points[0].length][2];
         else
-            return new int[0][0];
+            return new float[0][0];
         for (int point = 0; point < matrix.length; point++) {
             matrix[point][0] = points[0][point];
             matrix[point][1] = points[1][point];
@@ -66,10 +67,10 @@ public class DrawElement implements Drawable {
         return matrix;
     }
 
-    public void setMatrix(int[][] matrix) {
-        int[][] points;
+    public void setMatrix(float[][] matrix) {
+        float[][] points;
 
-        points = new int[2][matrix.length];
+        points = new float[2][matrix.length];
         for (int point = 0; point < matrix.length; point++) {
             points[0][point] = matrix[point][0];
             points[1][point] = matrix[point][1];
@@ -78,26 +79,29 @@ public class DrawElement implements Drawable {
         countDrawCoordinates();
     }
 
-    public void move(int x, int y) {
-        int[][] matrix = getMatrix();
-        setMatrix(Matrix.multiply(Matrix.resize(matrix, 3, matrix.length), new int[][] {{1, 0, 0}, {0, 1, 0}, {x, y, 1}}));
+    public void move(float x, float y) {
+        float[][] matrix = getMatrix();
+        setMatrix(Matrix.multiply(Matrix.resize(matrix, 3, matrix.length), new float[][] {{1F, 0F, 0F},
+                                                                                                {0F, 1F, 0F},
+                                                                                                {x , y , 1F}}));
     }
 
     // precision is too bad
-    public void rotate(double radians) {
+    public void rotate(float radians) {
         rotate(getCenter(), radians);
     }
 
-    public void rotate(Point point, double radians) {
+    public void rotate(Point point, float radians) {
         move(-point.x, -point.y);
-        setMatrix(Matrix.multiply(getMatrix(), new double[][] {{Math.cos(radians), Math.sin(radians)}, {-Math.sin(radians), Math.cos(radians)}}));
+        setMatrix(Matrix.multiply(getMatrix(), new float[][] {  { (float) Math.cos(radians) , (float) Math.sin(radians)},
+                                                                { (float) -Math.sin(radians), (float) Math.cos(radians)}}));
         move(point.x, point.y);
     }
 
-    public void resize(double multiplier) {
+    public void resize(float multiplier) {
         Point center = getCenter();
         move(-center.x, -center.y);
-        setMatrix(Matrix.multiply(getMatrix(), new double[][] {{multiplier, 0}, {0, multiplier}}));
+        setMatrix(Matrix.multiply(getMatrix(), new float[][] {{multiplier, 0F}, {0F, multiplier}}));
         move(center.x, center.y);
     }
 

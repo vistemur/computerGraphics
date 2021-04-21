@@ -7,6 +7,7 @@ import Drawings.graphicElements.Rectangle;
 import Drawings.graphicElements.Splines.*;
 import Drawings.graphicElements.Splines.Spline;
 import Drawings.graphicElements.Support.LineFormula;
+import Drawings.graphicElements.Support.Point;
 
 import javax.swing.*;
 import java.awt.*;
@@ -157,7 +158,7 @@ public abstract class DrawPanel extends JPanel {
         return (Triangle) makeElement(new Triangle(x1, y1, x2, y2, x3, y3));
     }
 
-    protected Circle makeCircle(int x, int y, int radius) {
+    protected Circle makeCircle(float x, float y, int radius) {
         return (Circle) makeElement(new Circle(x, y, radius));
     }
     protected Circle makeCircle(Point point, int radius) { return (Circle) makeElement(new Circle(point, radius)); }
@@ -174,10 +175,7 @@ public abstract class DrawPanel extends JPanel {
         return (Image) makeElement(new Image(filePath, x, y, width, height));
     }
 
-    protected Spline makeSpline() {
-        return (Spline) makeElement(new Spline());
-    }
-
+    protected Spline makeSpline() { return (Spline) makeElement(new Spline()); }
     protected LineSpline makeLineSpline(Point ... points) { return (LineSpline) makeElement(new LineSpline(points)); }
     protected BSpline makeBSpline() { return (BSpline) makeElement(new BSpline()); }
 

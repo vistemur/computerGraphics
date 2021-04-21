@@ -5,7 +5,7 @@ public class ConstantCoordinateSpace  extends LinearCoordinateSpace {
 
     int width, height;
 
-    public ConstantCoordinateSpace(int userMinX, int userMaxX, int userMinY, int userMaxY, int width, int height) {
+    public ConstantCoordinateSpace(float userMinX, float userMaxX, float userMinY, float userMaxY, int width, int height) {
         super(userMinX, userMaxX, userMinY, userMaxY);
         this.realMaxX = width;
         this.realMaxY = height;

@@ -8,6 +8,7 @@ public class ABCDMatrixSketch extends DrawPanel {
 
     Triangle triangle;
 
+
     @Override
     protected void setup() {
         showGrid = true;
@@ -15,11 +16,9 @@ public class ABCDMatrixSketch extends DrawPanel {
     }
 
     @Override
-    protected void draw() {
+    protected void draw() {}
 
-    }
-
-    public void applyMatrix(double[][] matrix) {
+    public void applyMatrix(float[][] matrix) {
         triangle.setMatrix(Matrix.multiply(triangle.getMatrix(), matrix));
     }
 

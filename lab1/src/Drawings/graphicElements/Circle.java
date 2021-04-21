@@ -1,13 +1,14 @@
 package Drawings.graphicElements;
 
 import java.awt.*;
+import Drawings.graphicElements.Support.Point;
 
 public class Circle extends DrawElement {
 
-    int radius;
+    float radius;
     int drawRadiusX, drawRadiusY;
 
-    public Circle(int x, int y, int radius) {
+    public Circle(float x, float y, float radius) {
         setCenter(x, y);
         setRadius(radius);
     }
@@ -20,7 +21,7 @@ public class Circle extends DrawElement {
         return new Point(points[0][0], points[1][0]);
     }
 
-    public int getRadius() {
+    public float getRadius() {
         return radius / 2;
     }
 
@@ -28,11 +29,11 @@ public class Circle extends DrawElement {
         setCenter(point.x, point.y);
     }
 
-    public void setCenter(int x, int y) {
-        setPoints(new int[][] {{x}, {y}});
+    public void setCenter(float x, float y) {
+        setPoints(new float[][] {{x}, {y}});
     }
 
-    public void setRadius(int radius) {
+    public void setRadius(float radius) {
         this.radius = radius * 2;
         recountCoordinates();
     }

@@ -10,6 +10,7 @@ public class MatrixPanel extends JPanel {
 
     public MatrixPanel() {
         super();
+
         topPanel = new JPanel();
         lowPanel = new JPanel();
         textFields = new JTextField[4];
@@ -46,14 +47,14 @@ public class MatrixPanel extends JPanel {
         add(lowPanel, BorderLayout.CENTER);
     }
 
-    public double[][] getMatrix() {
-        double[][] matrix;
+    public float[][] getMatrix() {
+        float[][] matrix;
 
-        matrix = new double[2][2];
-        matrix[0][0] = Double.parseDouble(textFields[0].getText());
-        matrix[0][1] = Double.parseDouble(textFields[1].getText());
-        matrix[1][0] = Double.parseDouble(textFields[2].getText());
-        matrix[1][1] = Double.parseDouble(textFields[3].getText());
+        matrix = new float[2][2];
+        matrix[0][0] = Float.parseFloat(textFields[0].getText());
+        matrix[0][1] = Float.parseFloat(textFields[1].getText());
+        matrix[1][0] = Float.parseFloat(textFields[2].getText());
+        matrix[1][1] = Float.parseFloat(textFields[3].getText());
         return matrix;
     }
 

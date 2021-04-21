@@ -5,6 +5,8 @@ import Drawings.graphicElements.Circle;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
+import Drawings.graphicElements.Support.Point;
+
 
 public class MovableCircles {
 

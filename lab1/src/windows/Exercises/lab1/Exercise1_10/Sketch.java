@@ -3,6 +3,8 @@ package windows.Exercises.lab1.Exercise1_10;
 import Drawings.CoordinateSpace.*;
 import Drawings.graphicElements.*;
 import gui.DrawPanel;
+import Drawings.graphicElements.Support.Point;
+
 
 import java.awt.*;
 import java.awt.geom.Point2D;
@@ -139,7 +141,7 @@ public class Sketch extends DrawPanel {
                 circle2.getCenter(), circle2.getRadius());
     }
 
-    private void countIntersectionPoints(Point circle1Center, int circle1Radius, Point circle2Center, int circle2Radius) {
+    private void countIntersectionPoints(Point circle1Center, float circle1Radius, Point circle2Center, float circle2Radius) {
         Point point0 = new Point();
         Point point1 = new Point();
         line1.setVisible(false);
@@ -180,8 +182,8 @@ public class Sketch extends DrawPanel {
             // если это исходные две окружности, то строим для них внутренние касательные
             // если это дополнительно построенные окружности, то они не должны были сюда попасть
 
-            int x;
-            int y;
+            float x;
+            float y;
             int r3;
             r3 = (int)(0.5 * LL);
 
@@ -246,7 +248,7 @@ public class Sketch extends DrawPanel {
         line0.setPoint(1, point1);
     }
 
-    private void buildTangentLines(int x, int y, Point circle1Center, int circle1Radius, Point circle2Center, int circle2Radius) {
+    private void buildTangentLines(float x, float y, Point circle1Center, float circle1Radius, Point circle2Center, float circle2Radius) {
         Point point00 = new Point();
         Point point01 = new Point();
         Point point10 = new Point();

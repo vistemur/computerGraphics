@@ -1,9 +1,9 @@
 package Drawings.CoordinateSpace;
 
-import java.awt.Point;
+import Drawings.graphicElements.Support.Point;
 
 public class Mouse {
-    public int x, y;
+    public float x, y;
 
     public Point getPoint() {
         return new Point(x, y);

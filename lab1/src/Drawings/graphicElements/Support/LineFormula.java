@@ -1,16 +1,12 @@
 package Drawings.graphicElements.Support;
 
-import Drawings.graphicElements.Line;
-
-import java.awt.*;
-
 public class LineFormula {
 
-    public double a;  // a*x + b*y + c = 0
-    public double b = 1;
-    public double c;
+    public float a;  // a*x + b*y + c = 0
+    public float b = 1;
+    public float c;
 
-    public LineFormula(double ... numbers) {
+    public LineFormula(float ... numbers) {
         if (numbers.length > 0) {
             a = numbers[0];
             if (numbers.length > 1) {
@@ -56,7 +52,7 @@ public class LineFormula {
 
     public Point getIntersectionPoint(LineFormula line) {
         LineFormula helperFormula;
-        double x, y;
+        float x, y;
 
         if (isParallel(line))
             return new Point();
@@ -84,25 +80,25 @@ public class LineFormula {
             b = 0;
             c = -point1.x;
         } else {
-            a = ((double) point2.y - point1.y) / (point2.x - point1.x);
+            a = ((float) point2.y - point1.y) / (point2.x - point1.x);
             b = -1;
             c = point1.y - point1.x * a;
         }
     }
 
-    public void multiply(double multiplier) {
+    public void multiply(float multiplier) {
         a *= multiplier;
         b *= multiplier;
         c *= multiplier;
     }
 
-    public double countX(double y) {
+    public float countX(float y) {
         if (a == 0)
             return 0;
         return -(y * b + c) / a;
     }
 
-    public double countY(double x) {
+    public float countY(float x) {
         if (b == 0)
             return 0;
         return -(x * a + c) / b;
@@ -112,7 +108,7 @@ public class LineFormula {
         return a + " * x " + nbToStr(b) + " * y " + nbToStr(c) + " = 0";
     }
 
-    private String nbToStr(double nb) {
+    private String nbToStr(float nb) {
         if (nb >= 0)
             return "+ " + nb;
         else

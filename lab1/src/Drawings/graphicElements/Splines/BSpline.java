@@ -1,7 +1,7 @@
 package Drawings.graphicElements.Splines;
 
-import java.awt.*;
 import java.util.LinkedList;
+import Drawings.graphicElements.Support.Point;
 
 public class BSpline extends Spline {
 

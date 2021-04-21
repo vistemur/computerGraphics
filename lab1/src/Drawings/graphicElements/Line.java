@@ -1,15 +1,17 @@
 package Drawings.graphicElements;
 
 import Drawings.graphicElements.Support.LineFormula;
+import Drawings.graphicElements.Support.Point;
+
 
 import java.awt.*;
 
 public class Line extends DrawElement {
 
     private boolean infinite = false;
-    private int[][] infPoints = new int[2][2];
+    private float[][] infPoints = new float[2][2];
 
-    public Line(int x1, int y1, int x2, int y2) {
+    public Line(float x1, float y1, float x2, float y2) {
         setPoints(x1, y1, x2, y2);
     }
 
@@ -26,16 +28,16 @@ public class Line extends DrawElement {
         countDrawCoordinates();
     }
 
-    public void setPoints(int x1, int y1, int x2, int y2) {
-        points = new int[][] {{x1, x2}, {y1, y2}};
+    public void setPoints(float x1, float y1, float x2, float y2) {
+        points = new float[][] {{x1, x2}, {y1, y2}};
         countDrawCoordinates();
     }
 
     public void setFormula(LineFormula lineFormula) {
         if (lineFormula.b == 0) {
-            setPoints((int) lineFormula.countX(0), 0, (int) lineFormula.countX(10), 10);
+            setPoints(lineFormula.countX(0), 0, lineFormula.countX(10), 10);
         } else {
-            setPoints(0, (int) lineFormula.countY(0), 10, (int) lineFormula.countY(10));
+            setPoints(0, lineFormula.countY(0), 10, lineFormula.countY(10));
         }
         setInfinite(true);
     }
@@ -114,7 +116,7 @@ public class Line extends DrawElement {
     }
 
     private void setInfinitePoints() {
-        int[] space = coordinateSpace.getUserData();
+        float[] space = coordinateSpace.getUserData();
         if (points[0][0] == points[0][1])
             countInfVertical(space[2], space[3]);
         else if (points[1][0] == points[1][1])
@@ -124,24 +126,24 @@ public class Line extends DrawElement {
         countInfinitePoints();
     }
 
-    private void countInfVertical(int min, int max) {
+    private void countInfVertical(float min, float max) {
         infPoints[0][0] = points[0][0];
         infPoints[1][0] = min;
         infPoints[0][1] = points[0][1];
         infPoints[1][1] = max;
     }
 
-    private void countInfHorizontal(int min, int max) {
+    private void countInfHorizontal(float min, float max) {
         infPoints[0][0] = min;
         infPoints[1][0] = points[1][0];
         infPoints[0][1] = max;
         infPoints[1][1] = points[1][1];
     }
 
-    private void countInfPoints(LineFormula formula, int min, int max) {
-        infPoints[0][0] = (int) formula.countX(min);
+    private void countInfPoints(LineFormula formula, float min, float max) {
+        infPoints[0][0] = (float) formula.countX(min);
         infPoints[1][0] = min;
-        infPoints[0][1] = (int) formula.countX(max);
+        infPoints[0][1] = (float) formula.countX(max);
         infPoints[1][1] = max;
     }
 

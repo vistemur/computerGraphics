@@ -4,8 +4,8 @@ import Drawings.CoordinateSpace.ConstantCoordinateSpace;
 import Drawings.graphicElements.*;
 import Matrix.Matrix;
 import gui.DrawPanel;
+import Drawings.graphicElements.Support.Point;
 
-import java.awt.*;
 
 public class Sketch extends DrawPanel {
 
@@ -53,7 +53,7 @@ public class Sketch extends DrawPanel {
     protected void mousePressed() {
         switch (state) {
             case SettingPoints -> setPoint();
-            case normal -> triangle.setMatrix(Matrix.multiply(triangle.getMatrix(), new int[][] {{0, 1}, {-1, 0}}));
+            case normal -> triangle.setMatrix(Matrix.multiply(triangle.getMatrix(), new float[][] {{0, 1}, {-1, 0}}));
         }
     }
 

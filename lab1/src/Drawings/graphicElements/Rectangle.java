@@ -5,7 +5,7 @@ import java.awt.*;
 public class Rectangle extends DrawElement {
 
     public Rectangle(int x, int y, int width, int height) {
-        points = new int[][] {{x, x + width, x + width, x}, {y, y, y - height, y - height}};
+        points = new float[][] {{x, x + width, x + width, x}, {y, y, y - height, y - height}};
     }
 
     protected void display(Graphics g) {

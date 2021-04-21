@@ -1,6 +1,8 @@
 package Drawings.graphicElements.Splines;
 
 import Drawings.graphicElements.DrawElement;
+import Drawings.graphicElements.Support.Point;
+
 
 import java.awt.*;
 import java.util.Arrays;
@@ -12,7 +14,7 @@ public class Spline extends DrawElement {
     protected Point[] buildingPoints;
 
     public Spline() {
-        this.points = new int[2][0];
+        this.points = new float[2][0];
         countDrawCoordinates();
     }
 
@@ -40,7 +42,7 @@ public class Spline extends DrawElement {
         int counter = 0;
         int length = actualPoints.size();
         if (this.points == null || this.points[0].length != length)
-            this.points = new int[2][length];
+            this.points = new float[2][length];
         for (Point point : actualPoints) {
             this.points[0][counter] = point.x;
             this.points[1][counter] = point.y;
