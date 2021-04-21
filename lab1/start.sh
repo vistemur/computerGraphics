@@ -1,1 +1,1 @@
-java -classpath out/production/lab1 Main
+java -classpath out/production/labs Main
