@@ -1,7 +1,7 @@
 package windows.Exercises.lab2.Excercise2_10;
 
 import Drawings.CoordinateSpace.LinearCoordinateSpace;
-import Drawings.graphicElements.Circle;
+import Drawings.graphicElements.Dimension2d.Circle;
 import Drawings.graphicElements.Splines.*;
 import gui.DrawPanel;
 import windows.Exercises.lab2.Helpers.MovableCircles;

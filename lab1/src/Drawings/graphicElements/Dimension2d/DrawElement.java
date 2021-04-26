@@ -1,6 +1,7 @@
-package Drawings.graphicElements;
+package Drawings.graphicElements.Dimension2d;
 
 import Drawings.CoordinateSpace.CoordinateSpace;
+import Drawings.graphicElements.Drawable;
 import Matrix.Matrix;
 import Drawings.graphicElements.Support.Point;
 
@@ -86,7 +87,6 @@ public class DrawElement implements Drawable {
                                                                                                 {x , y , 1F}}));
     }
 
-    // precision is too bad
     public void rotate(float radians) {
         rotate(getCenter(), radians);
     }
@@ -108,15 +108,12 @@ public class DrawElement implements Drawable {
     public Point getCenter() {
         Point center;
 
-        center = new Point(0, 0);
+        center = new Point();
         if (points != null) {
             if (points.length == 2 && points[0].length > 0) {
-                for (int point = 0; point < points[0].length; point++) {
-                    center.x += points[0][point];
-                    center.y += points[1][point];
-                }
-                center.x /= points[0].length;
-                center.y /= points[0].length;
+                for (int point = 0; point < points[0].length; point++)
+                    center.add(points[0][point], points[1][point]);
+                center.del((float) points[0].length);
             }
         }
         return center;

@@ -1,6 +1,6 @@
-package Drawings.graphicElements;
+package Drawings.graphicElements.Dimension2d;
 
-import Drawings.graphicElements.Support.LineFormula;
+import Drawings.graphicElements.Support.LineFormula2d;
 import Drawings.graphicElements.Support.Point;
 
 
@@ -19,8 +19,8 @@ public class Line extends DrawElement {
         setPoints(point1, point2);
     }
 
-    public Line(LineFormula lineFormula) {
-        setFormula(lineFormula);
+    public Line(LineFormula2d lineFormula2d) {
+        setFormula(lineFormula2d);
     }
 
     public void setPoints(Point point1, Point point2) {
@@ -33,11 +33,11 @@ public class Line extends DrawElement {
         countDrawCoordinates();
     }
 
-    public void setFormula(LineFormula lineFormula) {
-        if (lineFormula.b == 0) {
-            setPoints(lineFormula.countX(0), 0, lineFormula.countX(10), 10);
+    public void setFormula(LineFormula2d lineFormula2d) {
+        if (lineFormula2d.b == 0) {
+            setPoints(lineFormula2d.countX(0), 0, lineFormula2d.countX(10), 10);
         } else {
-            setPoints(0, lineFormula.countY(0), 10, lineFormula.countY(10));
+            setPoints(0, lineFormula2d.countY(0), 10, lineFormula2d.countY(10));
         }
         setInfinite(true);
     }
@@ -61,14 +61,14 @@ public class Line extends DrawElement {
     }
 
     public void makePerpendicularTo(Line line, Point through) {
-        LineFormula formula = line.getFormula();
+        LineFormula2d formula = line.getFormula();
         formula.makePerpendicular(through);
         setFormula(formula);
     }
 
     public Point getMirroredPoint(Point refPoint) {
         Point answer;
-        LineFormula perpendicular;
+        LineFormula2d perpendicular;
 
         perpendicular = getFormula();
         perpendicular.makePerpendicular(refPoint);
@@ -140,15 +140,15 @@ public class Line extends DrawElement {
         infPoints[1][1] = points[1][1];
     }
 
-    private void countInfPoints(LineFormula formula, float min, float max) {
+    private void countInfPoints(LineFormula2d formula, float min, float max) {
         infPoints[0][0] = (float) formula.countX(min);
         infPoints[1][0] = min;
         infPoints[0][1] = (float) formula.countX(max);
         infPoints[1][1] = max;
     }
 
-    public LineFormula getFormula() {
-        return new LineFormula(getPoint(0), getPoint(1));
+    public LineFormula2d getFormula() {
+        return new LineFormula2d(getPoint(0), getPoint(1));
     }
 
     protected void display(Graphics g) {

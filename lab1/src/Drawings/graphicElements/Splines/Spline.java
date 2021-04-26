@@ -1,6 +1,6 @@
 package Drawings.graphicElements.Splines;
 
-import Drawings.graphicElements.DrawElement;
+import Drawings.graphicElements.Dimension2d.DrawElement;
 import Drawings.graphicElements.Support.Point;
 
 

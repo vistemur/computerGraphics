@@ -45,9 +45,9 @@ public class Matrix {
         return answer;
     }
 
-    public static void print(int[][] m) {
-        for (int[] ints : m) {
-            for (int anInt : ints)
+    public static void print(float[][] m) {
+        for (float[] ints : m) {
+            for (float anInt : ints)
                 System.out.print(anInt + " ");
             System.out.println();
         }

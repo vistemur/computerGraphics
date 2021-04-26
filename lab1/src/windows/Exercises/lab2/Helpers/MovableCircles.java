@@ -1,7 +1,7 @@
 package windows.Exercises.lab2.Helpers;
 
 import Drawings.CoordinateSpace.Mouse;
-import Drawings.graphicElements.Circle;
+import Drawings.graphicElements.Dimension2d.Circle;
 
 import java.awt.*;
 import java.awt.geom.Point2D;

@@ -2,11 +2,15 @@ package gui;
 
 import Drawings.CoordinateSpace.*;
 import Drawings.graphicElements.*;
-import Drawings.graphicElements.Image;
-import Drawings.graphicElements.Rectangle;
+import Drawings.graphicElements.Dimension2d.*;
+import Drawings.graphicElements.Dimension2d.Image;
+import Drawings.graphicElements.Dimension2d.Rectangle;
+import Drawings.graphicElements.Dimension3d.Cube;
+import Drawings.graphicElements.Dimension3d.Rectangle3d;
+import Drawings.graphicElements.Dimension3d.Triangle3d;
 import Drawings.graphicElements.Splines.*;
 import Drawings.graphicElements.Splines.Spline;
-import Drawings.graphicElements.Support.LineFormula;
+import Drawings.graphicElements.Support.LineFormula2d;
 import Drawings.graphicElements.Support.Point;
 
 import javax.swing.*;
@@ -154,6 +158,7 @@ public abstract class DrawPanel extends JPanel {
     protected void mousePressed() {};
     protected void mouseReleased() {};
 
+    // needs to be optimised
     protected Triangle makeTriangle(int x1, int y1, int x2, int y2, int x3, int y3) {
         return (Triangle) makeElement(new Triangle(x1, y1, x2, y2, x3, y3));
     }
@@ -165,7 +170,7 @@ public abstract class DrawPanel extends JPanel {
 
     protected Line makeLine(int x1, int y1, int x2, int y2) { return (Line) makeElement(new Line(x1, y1, x2, y2)); }
     protected Line makeLine(Point point1, Point point2) { return (Line) makeElement(new Line(point1, point2)); }
-    protected Line makeLine(LineFormula lineFormula) { return (Line) makeElement(new Line(lineFormula)); }
+    protected Line makeLine(LineFormula2d lineFormula2d) { return (Line) makeElement(new Line(lineFormula2d)); }
 
     protected Rectangle makeRectangle(int x, int y, int width, int height) {
         return (Rectangle) makeElement(new Rectangle(x, y, width, height));
@@ -179,8 +184,11 @@ public abstract class DrawPanel extends JPanel {
     protected LineSpline makeLineSpline(Point ... points) { return (LineSpline) makeElement(new LineSpline(points)); }
     protected BSpline makeBSpline() { return (BSpline) makeElement(new BSpline()); }
 
+    protected Triangle3d makeTriangle3d() { return (Triangle3d) makeElement(new Triangle3d()); }
+    protected Rectangle3d makeRectangle3d() { return (Rectangle3d) makeElement(new Rectangle3d()); }
+    protected Cube makeCube() { return (Cube) makeElement(new Cube()); }
 
-    private DrawElement makeElement(DrawElement element) {
+    private Drawable makeElement(Drawable element) {
         element.setCoordinateSpace(coordinateSpace);
         addElement(element);
         return element;

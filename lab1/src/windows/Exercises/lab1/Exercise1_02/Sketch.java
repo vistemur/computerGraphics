@@ -1,6 +1,8 @@
 package windows.Exercises.lab1.Exercise1_02;
 
-import Drawings.graphicElements.*;
+import Drawings.graphicElements.Dimension2d.Circle;
+import Drawings.graphicElements.Dimension2d.Line;
+import Drawings.graphicElements.Dimension2d.Triangle;
 import gui.DrawPanel;
 
 import java.awt.geom.Point2D;

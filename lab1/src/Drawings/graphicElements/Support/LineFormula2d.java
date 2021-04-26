@@ -1,12 +1,12 @@
 package Drawings.graphicElements.Support;
 
-public class LineFormula {
+public class LineFormula2d {
 
     public float a;  // a*x + b*y + c = 0
     public float b = 1;
     public float c;
 
-    public LineFormula(float ... numbers) {
+    public LineFormula2d(float ... numbers) {
         if (numbers.length > 0) {
             a = numbers[0];
             if (numbers.length > 1) {
@@ -17,7 +17,7 @@ public class LineFormula {
         }
     }
 
-    public LineFormula(Point point1, Point point2) {
+    public LineFormula2d(Point point1, Point point2) {
         set(point1, point2);
     }
 
@@ -38,20 +38,20 @@ public class LineFormula {
         }
     }
 
-    public LineFormula copy() {
-        return new LineFormula(a, b, c);
+    public LineFormula2d copy() {
+        return new LineFormula2d(a, b, c);
     }
 
-    public boolean isEqual(LineFormula line) {
+    public boolean isEqual(LineFormula2d line) {
         return isParallel(line) && line.c == c;
     }
 
-    public boolean isParallel(LineFormula line) {
+    public boolean isParallel(LineFormula2d line) {
         return a == line.a && b == line.b;
     }
 
-    public Point getIntersectionPoint(LineFormula line) {
-        LineFormula helperFormula;
+    public Point getIntersectionPoint(LineFormula2d line) {
+        LineFormula2d helperFormula;
         float x, y;
 
         if (isParallel(line))

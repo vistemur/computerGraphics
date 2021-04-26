@@ -1,7 +1,8 @@
 package windows.Exercises.lab1.Exercise1_01;
 
 import Drawings.CoordinateSpace.ConstantCoordinateSpace;
-import Drawings.graphicElements.*;
+import Drawings.graphicElements.Dimension2d.Line;
+import Drawings.graphicElements.Dimension2d.Triangle;
 import Matrix.Matrix;
 import gui.DrawPanel;
 import Drawings.graphicElements.Support.Point;

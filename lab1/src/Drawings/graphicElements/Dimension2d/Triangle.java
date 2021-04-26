@@ -1,9 +1,13 @@
-package Drawings.graphicElements;
+package Drawings.graphicElements.Dimension2d;
 
 import java.awt.*;
 import Drawings.graphicElements.Support.Point;
 
 public class Triangle extends DrawElement {
+
+    public Triangle() {
+        points = new float[][] {{0, 0, 0}, {0, 0, 0}};
+    }
 
     public Triangle(float x1, float y1, float x2, float y2, float x3, float y3) {
         points = new float[][] {{x1, x2, x3}, {y1, y2, y3}};
@@ -36,6 +40,9 @@ public class Triangle extends DrawElement {
     }
 
     protected void display(Graphics g) {
-        g.fillPolygon(new Polygon(drawPoints[0], drawPoints[1], 3));
+        if (fill)
+            g.fillPolygon(new Polygon(drawPoints[0], drawPoints[1], 3));
+        else
+            g.drawPolygon(new Polygon(drawPoints[0], drawPoints[1], 3));
     }
 }

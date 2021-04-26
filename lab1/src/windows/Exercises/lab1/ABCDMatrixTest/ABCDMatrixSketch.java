@@ -1,13 +1,12 @@
 package windows.Exercises.lab1.ABCDMatrixTest;
 
-import Drawings.graphicElements.Triangle;
+import Drawings.graphicElements.Dimension2d.Triangle;
 import Matrix.Matrix;
 import gui.DrawPanel;
 
 public class ABCDMatrixSketch extends DrawPanel {
 
     Triangle triangle;
-
 
     @Override
     protected void setup() {

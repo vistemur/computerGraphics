@@ -1,4 +1,4 @@
-package Drawings.graphicElements;
+package Drawings.graphicElements.Dimension2d;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

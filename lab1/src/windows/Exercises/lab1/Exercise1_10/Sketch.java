@@ -1,7 +1,8 @@
 package windows.Exercises.lab1.Exercise1_10;
 
 import Drawings.CoordinateSpace.*;
-import Drawings.graphicElements.*;
+import Drawings.graphicElements.Dimension2d.Circle;
+import Drawings.graphicElements.Dimension2d.Line;
 import gui.DrawPanel;
 import Drawings.graphicElements.Support.Point;
 
