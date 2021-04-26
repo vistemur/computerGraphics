@@ -20,8 +20,7 @@ public class App {
     }
 
     public void show() {
-        //navigationManager.navigateTo("MainMenu");
-        navigationManager.navigateTo("Cube");
+        navigationManager.navigateTo("MainMenu");
         navigationManager.show();
     }
 }
