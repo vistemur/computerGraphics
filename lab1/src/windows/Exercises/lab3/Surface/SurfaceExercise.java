@@ -1,4 +1,4 @@
-package windows.Exercises.lab3.Cube;
+package windows.Exercises.lab3.Surface;
 
 import gui.DrawPanel;
 import windows.Exercises.Excercise;
@@ -6,7 +6,7 @@ import windows.Exercises.Excercise;
 import javax.swing.*;
 import java.awt.*;
 
-public class CubeExercise extends Excercise {
+public class SurfaceExercise extends Excercise {
 
     DrawPanel sketch;
 
@@ -35,7 +35,7 @@ public class CubeExercise extends Excercise {
     @Override
     public String getDescription() {
         return """
-                just a cube
+                supeer dupper fast garazd
                 """;
     }
 }

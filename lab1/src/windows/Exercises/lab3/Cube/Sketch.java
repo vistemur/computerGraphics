@@ -11,7 +11,7 @@ public class Sketch extends DrawPanel {
     @Override
     protected void setup() {
         cube = makeCube();
-        cube.setPoints(new Point3d(0, 0, 0), 10);
+        cube.setPoints(new Point3d(0, 0, 0), 40);
         cube.setFill(false);
     }
 

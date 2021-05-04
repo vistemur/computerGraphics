@@ -7,6 +7,7 @@ import Drawings.graphicElements.Dimension2d.Image;
 import Drawings.graphicElements.Dimension2d.Rectangle;
 import Drawings.graphicElements.Dimension3d.Cube;
 import Drawings.graphicElements.Dimension3d.Rectangle3d;
+import Drawings.graphicElements.Dimension3d.Surface;
 import Drawings.graphicElements.Dimension3d.Triangle3d;
 import Drawings.graphicElements.Splines.*;
 import Drawings.graphicElements.Splines.Spline;
@@ -187,6 +188,7 @@ public abstract class DrawPanel extends JPanel {
     protected Triangle3d makeTriangle3d() { return (Triangle3d) makeElement(new Triangle3d()); }
     protected Rectangle3d makeRectangle3d() { return (Rectangle3d) makeElement(new Rectangle3d()); }
     protected Cube makeCube() { return (Cube) makeElement(new Cube()); }
+    protected Surface makeSurface() { return (Surface) makeElement(new Surface()); }
 
     private Drawable makeElement(Drawable element) {
         element.setCoordinateSpace(coordinateSpace);

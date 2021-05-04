@@ -62,8 +62,8 @@ public class Spline extends DrawElement {
         double loveToP3 = t*t*t - t*t;
 
         point = new Point();
-        point.x = (int) ((points[0].x * loveToP0 + points[1].x * loveToP1 + points[2].x * loveToP2 + points[3].x * loveToP3) / 2);
-        point.y = (int) ((points[0].y * loveToP0 + points[1].y * loveToP1 + points[2].y * loveToP2 + points[3].y * loveToP3) / 2);
+        point.x = (float) ((points[0].x * loveToP0 + points[1].x * loveToP1 + points[2].x * loveToP2 + points[3].x * loveToP3) / 2);
+        point.y = (float) ((points[0].y * loveToP0 + points[1].y * loveToP1 + points[2].y * loveToP2 + points[3].y * loveToP3) / 2);
         return point;
     }
 

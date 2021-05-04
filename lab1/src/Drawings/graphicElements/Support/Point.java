@@ -57,4 +57,13 @@ public class Point {
             this.y /= delik[1];
         }
     }
+
+    public Point copy() {
+        return new Point(x, y);
+    }
+
+    public void set(Point point) {
+        this.x = point.x;
+        this.y = point.y;
+    }
 }
