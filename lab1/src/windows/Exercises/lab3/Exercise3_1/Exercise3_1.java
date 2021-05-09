@@ -19,7 +19,6 @@ public class Exercise3_1 extends Excercise {
     RotationAroundPointPanel rotationAroundCenterPanel;
     PointsPanelDataSetter pointsPanelDataSetter = new PointsPanelDataSetter();
     SketchPointsDataSetter sketchPointsDataSetter = new SketchPointsDataSetter();
-    SketchRotationDataSetter sketchRotationDataSetter = new SketchRotationDataSetter();
 
     @Override
     protected void initialize() {
@@ -35,7 +34,7 @@ public class Exercise3_1 extends Excercise {
             pointPanels[pointPanelNumber] = new PointPanel(pointsPanelDataSetter);
             pointPanels[pointPanelNumber].setPoint(points[pointPanelNumber]);
         }
-        rotationAroundCenterPanel = new RotationAroundPointPanel(sketchRotationDataSetter);
+        rotationAroundCenterPanel = new RotationAroundPointPanel(pointsPanelDataSetter);
         setColoredLayout();
     }
 
@@ -105,7 +104,14 @@ public class Exercise3_1 extends Excercise {
     public class PointsPanelDataSetter {
         public void enterAction(Point3d point) {
             sketch.setSurfacePoints(getPoints());
-            sketchRotationDataSetter.enterAction(rotationAroundCenterPanel.getRotation());
+            setRotation();
+        }
+
+        private void setRotation() {
+            if (rotationAroundCenterPanel != null) {
+                Point3d rotation = rotationAroundCenterPanel.getRotation();
+                sketch.setRotation(rotation.x / 100, rotation.y / 100, rotation.z / 100);
+            }
         }
 
         private void enterAction(Point3d[] points) {
@@ -130,16 +136,6 @@ public class Exercise3_1 extends Excercise {
     public class SketchPointsDataSetter {
         public void setPointsData(Point3d[] points) {
             pointsPanelDataSetter.enterAction(points);
-        }
-    }
-
-    public class SketchRotationDataSetter extends PointsPanelDataSetter {
-        public void enterAction(Point3d point) {
-            sketch.setRotation(point.x / 100, point.y / 100, point.z / 100);
-        }
-
-        public void setPause(boolean pause) {
-            sketch.pause = pause;
         }
     }
 }

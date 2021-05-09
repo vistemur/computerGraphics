@@ -13,7 +13,7 @@ public class RotationAroundPointPanel extends JPanel {
     PointPanel rotationValuesPanel;
     Point3d defaultRotation;
 
-    public RotationAroundPointPanel(Exercise3_1.SketchRotationDataSetter surfaceDataController) {
+    public RotationAroundPointPanel(Exercise3_1.PointsPanelDataSetter surfaceDataController) {
         defaultRotation = new Point3d(1, 1, 0);
         setLayout(new FlowLayout());
         xyzPanel1 = new XYZPanel("X", "Y", "Z");
