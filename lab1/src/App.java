@@ -23,8 +23,7 @@ public class App {
     }
 
     public void show() {
-        //navigationManager.navigateTo("MainMenu");
-        navigationManager.navigateTo("Exercise3_1");
+        navigationManager.navigateTo("MainMenu");
         navigationManager.show();
     }
 }
