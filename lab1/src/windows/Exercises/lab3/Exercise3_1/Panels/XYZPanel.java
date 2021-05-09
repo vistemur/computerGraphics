@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class XYZPanel extends JPanel {
 
-    int FieldsAmount = 3;
+    int FieldsAmount;
     int fieldsWidth = 50;
     int fieldsHeight = 30;
     JLabel[] textFields;
@@ -22,6 +22,11 @@ public class XYZPanel extends JPanel {
         layoutElements();
     }
 
+    public void setFieldSizes(int fieldsWidth, int fieldsHeight) {
+        this.fieldsWidth = fieldsWidth;
+        this.fieldsHeight = fieldsHeight;
+    }
+
     private void layoutElements() {
         for (var textField : textFields)
             add(textField);
@@ -29,7 +34,9 @@ public class XYZPanel extends JPanel {
 
     public void setPreferredSize(Dimension dimension) {
         super.setPreferredSize(dimension);
-        int blockWidth = dimension.width / FieldsAmount;
+        int blockWidth = dimension.width;
+        if (FieldsAmount != 0)
+            blockWidth = dimension.width / FieldsAmount;
         int realFieldWidth = fieldsWidth;
         int realFieldHeight = fieldsHeight;
         if (blockWidth < realFieldWidth)

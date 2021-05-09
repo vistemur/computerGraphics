@@ -1,7 +1,7 @@
 package windows.Exercises.lab3.Exercise3_1.Panels;
 
 import Drawings.graphicElements.Support.Point3d;
-import windows.Exercises.lab3.Exercise3_1.SurfaceDataController;
+import windows.Exercises.lab3.Exercise3_1.Exercise3_1;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,9 +17,9 @@ public class PointPanel extends JPanel {
     int fieldsWidth = 50;
     int fieldsHeight = 30;
     JTextField[] textFields;
-    SurfaceDataController surfaceDataController;
+    Exercise3_1.PointsPanelDataSetter surfaceDataController;
 
-    public PointPanel(SurfaceDataController surfaceDataController) {
+    public PointPanel(Exercise3_1.PointsPanelDataSetter surfaceDataController) {
         super();
         setLayout(null);
         textFields = new JTextField[FieldsAmount];
@@ -50,7 +50,7 @@ public class PointPanel extends JPanel {
                 public void keyPressed(KeyEvent e) {
                     if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                         requestFocusInWindow();
-                        PointPanel.this.surfaceDataController.setPointsFromPanel();
+                        PointPanel.this.surfaceDataController.enterAction(PointPanel.this.getPoint());
                     }
                 }
             });
