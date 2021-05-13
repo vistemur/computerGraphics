@@ -68,7 +68,7 @@ public abstract class DrawPanel extends JPanel {
         setGrid();
     }
 
-    public void setBackground(Color color) {
+    public void setBackgroundColor(Color color) {
         if (color != null)
             this.backgroundColor = color;
     }

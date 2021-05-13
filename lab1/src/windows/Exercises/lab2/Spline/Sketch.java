@@ -25,7 +25,7 @@ public class Sketch extends DrawPanel {
     private void buildCoordinateSpace() {
         size = 10000;
         setCoordinateSpace(new LinearCoordinateSpace(-size, size, -size, size));
-        setBackground(Color.white);
+        setBackgroundColor(Color.white);
     }
 
     private void buildSpline() {

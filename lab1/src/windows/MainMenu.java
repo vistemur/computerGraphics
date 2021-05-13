@@ -22,7 +22,8 @@ public class MainMenu extends navigation.Window {
     private static int menuNumber = 0; // labNumber - 1
     private final String[][][] labStrings = {   {{"Exercise1_01", "1"}, {"Exercise1_02", "2"}, {"Exercise1_10", "10"}, {"ABCDMatrixTest", "abcd"}},
                                                 {{"Exercise2_10", "10"}, {"ExerciseSpline", "simple spline"}},
-                                                {{"CubeExercise", "cube"}, {"SurfaceExercise", "surface"}, {"Exercise3_1", "1"}}};
+                                                {{"CubeExercise", "cube"}, {"SurfaceExercise", "surface"}, {"Exercise3_1", "1"}},
+                                                {{"QuadLines", "rectangle and lines"}}};
 
     @Override
     protected void init() {

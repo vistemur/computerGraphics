@@ -8,6 +8,7 @@ import windows.Exercises.lab2.Spline.ExerciseSpline;
 import windows.Exercises.lab3.Cube.CubeExercise;
 import windows.Exercises.lab3.Exercise3_1.Exercise3_1;
 import windows.Exercises.lab3.Surface.SurfaceExercise;
+import windows.Exercises.lab4.QuadLines.QuadLines;
 import windows.MainMenu;
 
 public class App {
@@ -19,7 +20,7 @@ public class App {
                 new MainMenu(), new Exercise1_10(), new Exercise1_01(),
                 new Exercise1_02(), new ABCDMatrixTest(), new Exercise2_10(),
                 new ExerciseSpline(), new CubeExercise(), new SurfaceExercise(),
-                new Exercise3_1());
+                new Exercise3_1(), new QuadLines());
     }
 
     public void show() {

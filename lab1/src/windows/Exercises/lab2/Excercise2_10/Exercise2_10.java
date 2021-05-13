@@ -51,7 +51,7 @@ public class Exercise2_10 extends Excercise {
     }
 
     private void setColors() {
-        sketch.setBackground(Color.red);
+        sketch.setBackgroundColor(Color.red);
         kPanel.setBackground(Color.ORANGE);
         pointsPanel.setBackground(Color.green);
     }
