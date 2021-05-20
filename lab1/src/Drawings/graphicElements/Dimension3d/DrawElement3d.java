@@ -1,6 +1,7 @@
 package Drawings.graphicElements.Dimension3d;
 
 import Drawings.CoordinateSpace.CoordinateSpace;
+import Drawings.graphicElements.Dimension3d.Visibility.VisibilityController;
 import Drawings.graphicElements.Drawable;
 import Drawings.graphicElements.Support.*;
 import Matrix.Matrix;

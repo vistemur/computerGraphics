@@ -2,6 +2,8 @@ package Drawings.graphicElements.Dimension3d;
 
 import Drawings.graphicElements.Support.Point3d;
 
+import java.awt.*;
+
 public class Rectangle3d extends Triangled3dElement {
 
     public void setPoints(Point3d refPoint1, Point3d refPoint2) {

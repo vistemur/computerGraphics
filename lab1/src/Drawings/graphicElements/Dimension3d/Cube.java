@@ -2,6 +2,8 @@ package Drawings.graphicElements.Dimension3d;
 
 import Drawings.graphicElements.Support.Point3d;
 
+import java.awt.*;
+
 public class Cube extends Triangled3dElement {
     public void setPoints(Point3d center, float sideLen) {
         float d = sideLen / 2;
@@ -18,17 +20,24 @@ public class Cube extends Triangled3dElement {
         Point3d p7 = new Point3d(center.x + d , center.y + d, center.z - d);
         Point3d p8 = new Point3d(center.x + d , center.y + d, center.z + d);
         triangles[0].setPoints(p1, p2, p4);
-        triangles[1].setPoints(p1, p3, p4);
-        triangles[2].setPoints(p1, p2, p6);
+        triangles[1].setPoints(p3, p1, p4);
+        triangles[2].setPoints(p2, p1, p6);
         triangles[3].setPoints(p1, p5,p6);
-        triangles[4].setPoints(p5, p6, p8);
+        triangles[4].setPoints(p6, p5, p8);
         triangles[5].setPoints(p5, p7, p8);
-        triangles[6].setPoints(p8, p4, p3);
+        triangles[6].setPoints(p4, p8, p3);
         triangles[7].setPoints(p8, p7, p3);
         triangles[8].setPoints(p4, p2, p8);
-        triangles[9].setPoints(p2, p8, p6);
-        triangles[10].setPoints(p3, p1, p7);
+        triangles[9].setPoints(p8, p2, p6);
+        triangles[10].setPoints(p1, p3, p7);
         triangles[11].setPoints(p1, p7, p5);
         setTriangles(triangles);
+    }
+
+    public void setColor(Color... colors) {
+        for (int colorNumber = 0; colorNumber < colors.length && colorNumber * 2 + 1 < triangles.length; colorNumber++) {
+            triangles[colorNumber * 2].setColor(colors[colorNumber]);
+            triangles[colorNumber * 2 + 1].setColor(colors[colorNumber]);
+        }
     }
 }

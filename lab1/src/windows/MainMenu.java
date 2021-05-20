@@ -2,6 +2,7 @@ package windows;
 
 import gui.NavigationButton;
 import windows.Exercises.Excercise;
+import windows.Exercises.lab5.Excercise5_3.Exercise5_3;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,7 +24,8 @@ public class MainMenu extends navigation.Window {
     private final String[][][] labStrings = {   {{"Exercise1_01", "1"}, {"Exercise1_02", "2"}, {"Exercise1_10", "10"}, {"ABCDMatrixTest", "abcd"}},
                                                 {{"Exercise2_10", "10"}, {"ExerciseSpline", "simple spline"}},
                                                 {{"CubeExercise", "cube"}, {"SurfaceExercise", "surface"}, {"Exercise3_1", "1"}},
-                                                {{"QuadLines", "rectangle and lines"}}};
+                                                {{"QuadLines", "rectangle and lines"}, {"Krugaser", "Krugaser"}},
+                                                {{"Exercise5_3", "3"}, {"Exercise5_8", "8"}}};
 
     @Override
     protected void init() {

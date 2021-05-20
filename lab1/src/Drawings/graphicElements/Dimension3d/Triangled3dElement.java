@@ -1,6 +1,7 @@
 package Drawings.graphicElements.Dimension3d;
 
 import Drawings.CoordinateSpace.CoordinateSpace;
+import Drawings.graphicElements.Dimension3d.Visibility.VisibilityController;
 import Drawings.graphicElements.Drawable;
 import Drawings.graphicElements.Support.BuildingPoints;
 import Drawings.graphicElements.Support.Point3d;
@@ -16,6 +17,7 @@ public class Triangled3dElement implements Drawable {
     protected BuildingPoints buildingPoints = null;
     private boolean visible = true;
     protected boolean fill = true;
+    protected VisibilityController visibilityController;
 
     public Triangled3dElement() {
         this.triangles = new Triangle3d[0];
@@ -42,6 +44,20 @@ public class Triangled3dElement implements Drawable {
             triangle.setVisible(visible);
     }
 
+    public void setColor(Color color) {
+        for (Triangle3d triangle : triangles)
+            triangle.setColor(color);
+    }
+
+    public void setVisibilityController(VisibilityController visibilityController) {
+        this.visibilityController = visibilityController;
+        countTrianglesVisibility();
+    }
+
+    private void countTrianglesVisibility() {
+        if (visibilityController != null)
+            visibilityController.SetVisible(triangles);
+    }
 
     public Point3d[] getBuildingPoints() {
         return buildingPoints.getPoints();
@@ -53,6 +69,7 @@ public class Triangled3dElement implements Drawable {
         if (buildingPoints != null)
             buildingPoints.move(x, y, z);
         centerIsSet = false;
+        countTrianglesVisibility();
     }
 
     public void rotate(float ... rotation) { // x, y, z
@@ -65,6 +82,7 @@ public class Triangled3dElement implements Drawable {
         if (buildingPoints != null)
             buildingPoints.rotate(point, rotation);
         centerIsSet = false;
+        countTrianglesVisibility();
     }
 
     public Point3d getCenter() {
@@ -100,5 +118,6 @@ public class Triangled3dElement implements Drawable {
     public void countDrawCoordinates() {
         for (Triangle3d triangle : triangles)
             triangle.countDrawCoordinates();
+        countTrianglesVisibility();
     }
 }
