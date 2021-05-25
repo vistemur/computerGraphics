@@ -7,8 +7,8 @@ public class Surface extends Triangled3dElement {
 
     private int steps = 10;
 
-    public void setData(Point3d point1, Point3d point2, Point3d point3, Point3d point4) {
-        buildingPoints = new BuildingPoints(point1, point2, point3, point4);
+    public void setData(Point3d ... points) {
+        buildingPoints = new BuildingPoints(points);
         countTriangles();
     }
 
@@ -34,12 +34,12 @@ public class Surface extends Triangled3dElement {
                 for (float w = step; w <= 1 + step / 10; w += step) {
 
                     triangles[c] = new Triangle3d();
-                    triangles[c].setPoints(prevPoint, prevLinePoints[currentLinePointNumber - 1], prevLinePoints[currentLinePointNumber]);
+                    triangles[c].setPoints(prevLinePoints[currentLinePointNumber - 1], prevPoint, prevLinePoints[currentLinePointNumber]);
                     c++;
 
                     newPoint = countPoint(u, w);
                     triangles[c] = new Triangle3d();
-                    triangles[c].setPoints(newPoint, prevPoint, prevLinePoints[currentLinePointNumber]);
+                    triangles[c].setPoints(newPoint, prevLinePoints[currentLinePointNumber], prevPoint);
 
                     prevLinePoints[currentLinePointNumber - 1].set(prevPoint);
                     prevPoint.set(newPoint);
@@ -55,7 +55,7 @@ public class Surface extends Triangled3dElement {
         }
     }
 
-    private Point3d countPoint(float u, float w) {
+    protected Point3d countPoint(float u, float w) {
         Point3d point;
         Point3d adder;
 
@@ -88,5 +88,10 @@ public class Surface extends Triangled3dElement {
     public void setSteps(int steps) {
         this.steps = steps;
         countTriangles();
+    }
+
+    protected boolean isNear(float number, float near) {
+        float precision = 1.0f / (steps * 10);
+        return  (number >= (near - precision)) && (number <= (near + precision));
     }
 }

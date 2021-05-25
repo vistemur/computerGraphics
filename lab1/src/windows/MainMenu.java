@@ -25,7 +25,8 @@ public class MainMenu extends navigation.Window {
                                                 {{"Exercise2_10", "10"}, {"ExerciseSpline", "simple spline"}},
                                                 {{"CubeExercise", "cube"}, {"SurfaceExercise", "surface"}, {"Exercise3_1", "1"}},
                                                 {{"QuadLines", "rectangle and lines"}, {"Krugaser", "Krugaser"}},
-                                                {{"Exercise5_3", "3"}, {"Exercise5_8", "8"}}};
+                                                {{"Exercise5_3", "3"}, {"Exercise5_8", "8"}},
+                                                {{"Exercise6_4", "4"}}};
 
     @Override
     protected void init() {

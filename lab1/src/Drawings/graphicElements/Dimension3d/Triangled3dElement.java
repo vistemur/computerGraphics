@@ -63,6 +63,10 @@ public class Triangled3dElement implements Drawable {
         return buildingPoints.getPoints();
     }
 
+    public Triangle3d[] getTriangles() {
+        return triangles;
+    }
+
     public void move(float x, float y, float z) {
         for (Triangle3d triangle : triangles)
             triangle.move(x, y, z);

@@ -38,6 +38,7 @@ public class BuildingPoints {
             point.z = this.points[pointNumber][2];
         } catch (IndexOutOfBoundsException e) {
             System.out.println("unable to get point " + pointNumber);
+            e.printStackTrace();
         }
         return point;
     }

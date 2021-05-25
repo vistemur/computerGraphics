@@ -12,6 +12,7 @@ import windows.Exercises.lab4.Krugaser.Krugaser;
 import windows.Exercises.lab4.QuadLines.QuadLines;
 import windows.Exercises.lab5.Excercise5_3.Exercise5_3;
 import windows.Exercises.lab5.Excercise5_8.Exercise5_8;
+import windows.Exercises.lab6.Excercise6_4.Exercise6_4;
 import windows.MainMenu;
 
 public class App {
@@ -24,11 +25,12 @@ public class App {
                 new Exercise1_02(), new ABCDMatrixTest(), new Exercise2_10(),
                 new ExerciseSpline(), new CubeExercise(), new SurfaceExercise(),
                 new Exercise3_1(), new QuadLines(), new Krugaser(),
-                new Exercise5_3(), new Exercise5_8());
+                new Exercise5_3(), new Exercise5_8(), new Exercise6_4());
     }
 
     public void show() {
-        navigationManager.navigateTo("MainMenu");
+//        navigationManager.navigateTo("MainMenu");
+        navigationManager.navigateTo("Exercise6_4");
         navigationManager.show();
     }
 }

@@ -5,21 +5,16 @@ import Drawings.graphicElements.*;
 import Drawings.graphicElements.Dimension2d.*;
 import Drawings.graphicElements.Dimension2d.Image;
 import Drawings.graphicElements.Dimension2d.Rectangle;
-import Drawings.graphicElements.Dimension3d.Cube;
-import Drawings.graphicElements.Dimension3d.Rectangle3d;
-import Drawings.graphicElements.Dimension3d.Surface;
-import Drawings.graphicElements.Dimension3d.Triangle3d;
+import Drawings.graphicElements.Dimension3d.*;
 import Drawings.graphicElements.Splines.*;
 import Drawings.graphicElements.Splines.Spline;
 import Drawings.graphicElements.Support.LineFormula2d;
 import Drawings.graphicElements.Support.Point;
 
 import javax.swing.*;
+import javax.swing.text.JTextComponent;
 import java.awt.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -29,7 +24,6 @@ public abstract class DrawPanel extends JPanel {
     private int elementsCapacity;
     private Drawable[] elements;
     private CoordinateSpace coordinateSpace;
-    private DrawPanel drawPanel = this;
     protected boolean showGrid = false;
     private Drawable grid;
     protected Mouse mouse;
@@ -129,7 +123,7 @@ public abstract class DrawPanel extends JPanel {
         this.addComponentListener(new ComponentAdapter() {
             public void componentResized(ComponentEvent e) {
                 super.componentResized(e);
-                coordinateSpace.setReal(drawPanel.getWidth(), drawPanel.getHeight());
+                coordinateSpace.setReal(DrawPanel.this.getWidth(), DrawPanel.this.getHeight());
                 for (int elem = 0; elem < elementsAmount; elem++)
                     elements[elem].countDrawCoordinates();
                 if (showGrid)
@@ -140,24 +134,41 @@ public abstract class DrawPanel extends JPanel {
         this.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                drawPanel.mouseClicked();
+                DrawPanel.this.mouseClicked();
             }
             public void mousePressed(MouseEvent e) {
                 super.mousePressed(e);
-                drawPanel.mousePressed();
+                DrawPanel.this.mousePressed();
             }
             public void mouseReleased(MouseEvent e) {
                 super.mouseReleased(e);
-                drawPanel.mouseReleased();
+                DrawPanel.this.mouseReleased();
+            }
+        });
+
+        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher() {
+            @Override
+            public boolean dispatchKeyEvent(KeyEvent e) {
+                switch (e.getID()) {
+                    case KeyEvent.KEY_PRESSED:
+                        DrawPanel.this.keyPressed(e);
+                        break;
+                    case KeyEvent.KEY_RELEASED:
+                        DrawPanel.this.keyReleased(e);
+                        break;
+                }
+                return false;
             }
         });
     }
 
     protected abstract void setup();
     protected abstract void draw();
-    protected void mouseClicked() {};
-    protected void mousePressed() {};
-    protected void mouseReleased() {};
+    protected void mouseClicked() {}
+    protected void mousePressed() {}
+    protected void mouseReleased() {}
+    protected void keyPressed(KeyEvent e) {}
+    protected void keyReleased(KeyEvent e) {}
 
     // needs to be optimised
     protected Triangle makeTriangle(int x1, int y1, int x2, int y2, int x3, int y3) {
@@ -189,6 +200,7 @@ public abstract class DrawPanel extends JPanel {
     protected Rectangle3d makeRectangle3d() { return (Rectangle3d) makeElement(new Rectangle3d()); }
     protected Cube makeCube() { return (Cube) makeElement(new Cube()); }
     protected Surface makeSurface() { return (Surface) makeElement(new Surface()); }
+    protected Surface makeSphere() { return (Sphere) makeElement(new Sphere()); }
 
     private Drawable makeElement(Drawable element) {
         element.setCoordinateSpace(coordinateSpace);
