@@ -18,6 +18,12 @@ public class Point3d extends Point {
         this.z = point.z;
     }
 
+    public static float length(Point3d point1, Point3d point2) {
+        return (float) Math.sqrt(   Math.pow(point1.x - point2.x, 2) +
+                                    Math.pow(point1.y - point2.y, 2) +
+                                    Math.pow(point1.z - point2.z, 2));
+    }
+
     public String toString() {
         return "(" + x + ", " + y + ", " + z + ")";
     }

@@ -68,6 +68,14 @@ public class DrawElement implements Drawable {
         return matrix;
     }
 
+    public Point countCenter(Point[] points) {
+        Point center = new Point();
+        for (var point : points)
+            center.add(point);
+        center.del(points.length);
+        return center;
+    }
+
     public void setMatrix(float[][] matrix) {
         float[][] points;
 

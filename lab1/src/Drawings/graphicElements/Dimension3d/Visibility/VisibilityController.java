@@ -12,7 +12,6 @@ public abstract class VisibilityController {
             triangle3ds[pos2] = replacer;
         } else {
             System.out.print("unable to replace triangles " + pos1 + " and " + pos2);
-
         }
     }
 }

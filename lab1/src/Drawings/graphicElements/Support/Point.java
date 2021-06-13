@@ -19,6 +19,10 @@ public class Point {
         this.y = point.y;
     }
 
+    public static float length(Point point1, Point point2) {
+        return (float) Math.sqrt(Math.pow(point1.x - point2.x, 2) + Math.pow(point1.y - point2.y, 2));
+    }
+
     public String toString() {
         return "(" + x + "," + y + ")";
     }
