@@ -10,14 +10,14 @@ clone repository and run start.sh
 
 make sure java installed on your machine (min version 15)
 
-```bash
+```console
 sh start.sh
 ```
 
 python run script also included for non bash systems
 
-```bash
-pyhon run.py
+```console
+python run.py
 ```
 
 That's it. No additional setup required.
