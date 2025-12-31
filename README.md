@@ -1,4 +1,4 @@
-# ✨ Computer graphics universuty projects
+# ✨ Computer graphics university projects
 
 This is a set of small projects from simple matrix transformations to complex 3d objects render with lighting 
 
