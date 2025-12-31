@@ -39,3 +39,29 @@ Top Collections navigation bar used to switch between project collections:
 Left Vertical row navigates to specific project
 
 Main content shows projects description (hover mouse on project to see its description)
+
+## Labs list
+lab 1
+- [lab1.1](https://github.com/vistemur/computerGraphics/tree/master/labs/src/windows/Exercises/lab1/Exercise1_01)
+- [lab1.2](https://github.com/vistemur/computerGraphics/tree/master/labs/src/windows/Exercises/lab1/Exercise1_02)
+- [lab1.10](https://github.com/vistemur/computerGraphics/tree/master/labs/src/windows/Exercises/lab1/Exercise1_10)
+
+lab 2
+- [lab2.10](https://github.com/vistemur/computerGraphics/tree/master/labs/src/windows/Exercises/lab2/Excercise2_10)
+- [spline](https://github.com/vistemur/computerGraphics/tree/master/labs/src/windows/Exercises/lab2/Spline)
+
+lab 3
+- [cube](https://github.com/vistemur/computerGraphics/tree/master/labs/src/windows/Exercises/lab3/Cube)
+- [lab3.1](https://github.com/vistemur/computerGraphics/tree/master/labs/src/windows/Exercises/lab3/Exercise3_1)
+- [surface](https://github.com/vistemur/computerGraphics/tree/master/labs/src/windows/Exercises/lab3/Surface)
+
+lab 4
+- [quadLines](https://github.com/vistemur/computerGraphics/tree/master/labs/src/windows/Exercises/lab4/QuadLines)
+- [Krugaser](https://github.com/vistemur/computerGraphics/tree/master/labs/src/windows/Exercises/lab4/Krugaser)
+
+lab 5
+- [lab 5.3](https://github.com/vistemur/computerGraphics/tree/master/labs/src/windows/Exercises/lab5/Excercise5_3)
+- [lab 5.8](https://github.com/vistemur/computerGraphics/tree/master/labs/src/windows/Exercises/lab5/Excercise5_8)
+
+lab 6
+- [lab6.4](https://github.com/vistemur/computerGraphics/tree/master/labs/src/windows/Exercises/lab6/Excercise6_4)
